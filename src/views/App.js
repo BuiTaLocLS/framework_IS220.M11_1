@@ -1,4 +1,5 @@
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import Home from './Home';
 import {
   BrowserRouter as Router,
@@ -21,7 +22,7 @@ function App() {
         </Route> */}
         </Switch>
       </Router>
-
+      <Footer />
     </div>
   );
 }
