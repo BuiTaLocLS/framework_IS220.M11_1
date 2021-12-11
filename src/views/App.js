@@ -11,9 +11,10 @@ import {
 function App() {
   return (
     <div>
-      <Header />
+
 
       <Router>
+        <Header />
         <Switch>
           <Route path="/" exact>
             <Home />
@@ -21,20 +22,20 @@ function App() {
           {/* <Route path="/user/:id">
           <DetailUser />
         </Route> */}
-          <Route path="/tim-kiem" exact>
-              <Search />
+          <Route path="/tim-kiem">
+            <Search />
           </Route>
-          <Route path="/gioi-thieu" exact>
-              <Intro />
+          <Route path="/gioi-thieu">
+            <Intro />
           </Route>
           <Route path="/chinh-sach-doi-tra" exact>
-              <ReturnPolicy />
+            <ReturnPolicy />
           </Route>
           <Route path="/chinh-sach-bao-mat" exact>
-              <SecurityPolicy />
+            <SecurityPolicy />
           </Route>
           <Route path="/dieu-khoan-dich-vu" exact>
-              <Service />
+            <Service />
           </Route>
         </Switch>
         <Footer />
