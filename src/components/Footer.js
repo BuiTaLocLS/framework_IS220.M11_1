@@ -1,14 +1,8 @@
 import React from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
 
+import { Link } from "react-router-dom";
 const Footer = () => {
     return (
-
         <div>
             {/* Footer */}
             <footer className="text-center text-lg-start bg-light text-muted">
@@ -138,6 +132,5 @@ const Footer = () => {
         </div>
     );
 };
-
 
 export default Footer;
