@@ -1,11 +1,11 @@
 import React from 'react';
-import './ProductBlock.scss'
+import './ProductBlock.scss';
 const ProductBlock = () => {
     return (
         <div>
             <section className="section-products">
                 <div className="container">
-                    <div className="row justify-content-center text-center">
+                    <div className="row text-start">
                         <div className="col-md-8 col-lg-6">
                             <div className="header">
                                 <h3>Featured Product</h3>
@@ -19,10 +19,10 @@ const ProductBlock = () => {
                             <div id="product-1" className="single-product">
                                 <div className="part-1">
                                     <ul>
-                                        <li><a href="#"><i className="fas fa-shopping-cart" /></a></li>
-                                        <li><a href="#"><i className="fas fa-heart" /></a></li>
-                                        <li><a href="#"><i className="fas fa-plus" /></a></li>
-                                        <li><a href="#"><i className="fas fa-expand" /></a></li>
+                                        <li><a href="#"><i className="bi bi-cart" /></a></li>
+                                        <li><a href="#"><i className="bi bi-heart" /></a></li>
+                                        <li><a href="#"><i className="bi bi-cart-plus" /></a></li>
+                                        <li><a href="#"><i className="bi bi-chevron-bar-expand" /></a></li>
                                     </ul>
                                 </div>
                                 <div className="part-2">
@@ -38,10 +38,10 @@ const ProductBlock = () => {
                                 <div className="part-1">
                                     <span className="discount">15% off</span>
                                     <ul>
-                                        <li><a href="#"><i className="fas fa-shopping-cart" /></a></li>
-                                        <li><a href="#"><i className="fas fa-heart" /></a></li>
-                                        <li><a href="#"><i className="fas fa-plus" /></a></li>
-                                        <li><a href="#"><i className="fas fa-expand" /></a></li>
+                                        <li><a href="#"><i className="bi bi-cart" /></a></li>
+                                        <li><a href="#"><i className="bi bi-heart" /></a></li>
+                                        <li><a href="#"><i className="bi bi-cart-plus" /></a></li>
+                                        <li><a href="#"><i className="bi bi-chevron-bar-expand" /></a></li>
                                     </ul>
                                 </div>
                                 <div className="part-2">
@@ -55,10 +55,10 @@ const ProductBlock = () => {
                             <div id="product-3" className="single-product">
                                 <div className="part-1">
                                     <ul>
-                                        <li><a href="#"><i className="fas fa-shopping-cart" /></a></li>
-                                        <li><a href="#"><i className="fas fa-heart" /></a></li>
-                                        <li><a href="#"><i className="fas fa-plus" /></a></li>
-                                        <li><a href="#"><i className="fas fa-expand" /></a></li>
+                                        <li><a href="#"><i className="bi bi-cart" /></a></li>
+                                        <li><a href="#"><i className="bi bi-heart" /></a></li>
+                                        <li><a href="#"><i className="bi bi-cart-plus" /></a></li>
+                                        <li><a href="#"><i className="bi bi-chevron-bar-expand" /></a></li>
                                     </ul>
                                 </div>
                                 <div className="part-2">
@@ -74,10 +74,10 @@ const ProductBlock = () => {
                                 <div className="part-1">
                                     <span className="new">new</span>
                                     <ul>
-                                        <li><a href="#"><i className="fas fa-shopping-cart" /></a></li>
-                                        <li><a href="#"><i className="fas fa-heart" /></a></li>
-                                        <li><a href="#"><i className="fas fa-plus" /></a></li>
-                                        <li><a href="#"><i className="fas fa-expand" /></a></li>
+                                        <li><a href="#"><i className="bi bi-cart" /></a></li>
+                                        <li><a href="#"><i className="bi bi-heart" /></a></li>
+                                        <li><a href="#"><i className="bi bi-cart-plus" /></a></li>
+                                        <li><a href="#"><i className="bi bi-chevron-bar-expand" /></a></li>
                                     </ul>
                                 </div>
                                 <div className="part-2">
@@ -91,10 +91,10 @@ const ProductBlock = () => {
                             <div id="product-1" className="single-product">
                                 <div className="part-1">
                                     <ul>
-                                        <li><a href="#"><i className="fas fa-shopping-cart" /></a></li>
-                                        <li><a href="#"><i className="fas fa-heart" /></a></li>
-                                        <li><a href="#"><i className="fas fa-plus" /></a></li>
-                                        <li><a href="#"><i className="fas fa-expand" /></a></li>
+                                        <li><a href="#"><i className="bi bi-cart" /></a></li>
+                                        <li><a href="#"><i className="bi bi-heart" /></a></li>
+                                        <li><a href="#"><i className="bi bi-cart-plus" /></a></li>
+                                        <li><a href="#"><i className="bi bi-chevron-bar-expand" /></a></li>
                                     </ul>
                                 </div>
                                 <div className="part-2">
@@ -110,10 +110,10 @@ const ProductBlock = () => {
                                 <div className="part-1">
                                     <span className="discount">15% off</span>
                                     <ul>
-                                        <li><a href="#"><i className="fas fa-shopping-cart" /></a></li>
-                                        <li><a href="#"><i className="fas fa-heart" /></a></li>
-                                        <li><a href="#"><i className="fas fa-plus" /></a></li>
-                                        <li><a href="#"><i className="fas fa-expand" /></a></li>
+                                        <li><a href="#"><i className="bi bi-cart" /></a></li>
+                                        <li><a href="#"><i className="bi bi-heart" /></a></li>
+                                        <li><a href="#"><i className="bi bi-cart-plus" /></a></li>
+                                        <li><a href="#"><i className="bi bi-chevron-bar-expand" /></a></li>
                                     </ul>
                                 </div>
                                 <div className="part-2">
@@ -127,10 +127,10 @@ const ProductBlock = () => {
                             <div id="product-3" className="single-product">
                                 <div className="part-1">
                                     <ul>
-                                        <li><a href="#"><i className="fas fa-shopping-cart" /></a></li>
-                                        <li><a href="#"><i className="fas fa-heart" /></a></li>
-                                        <li><a href="#"><i className="fas fa-plus" /></a></li>
-                                        <li><a href="#"><i className="fas fa-expand" /></a></li>
+                                        <li><a href="#"><i className="bi bi-cart" /></a></li>
+                                        <li><a href="#"><i className="bi bi-heart" /></a></li>
+                                        <li><a href="#"><i className="bi bi-cart-plus" /></a></li>
+                                        <li><a href="#"><i className="bi bi-chevron-bar-expand" /></a></li>
                                     </ul>
                                 </div>
                                 <div className="part-2">
@@ -146,10 +146,10 @@ const ProductBlock = () => {
                                 <div className="part-1">
                                     <span className="new">new</span>
                                     <ul>
-                                        <li><a href="#"><i className="fas fa-shopping-cart" /></a></li>
-                                        <li><a href="#"><i className="fas fa-heart" /></a></li>
-                                        <li><a href="#"><i className="fas fa-plus" /></a></li>
-                                        <li><a href="#"><i className="fas fa-expand" /></a></li>
+                                        <li><a href="#"><i className="bi bi-cart" /></a></li>
+                                        <li><a href="#"><i className="bi bi-heart" /></a></li>
+                                        <li><a href="#"><i className="bi bi-cart-plus" /></a></li>
+                                        <li><a href="#"><i className="bi bi-chevron-bar-expand" /></a></li>
                                     </ul>
                                 </div>
                                 <div className="part-2">

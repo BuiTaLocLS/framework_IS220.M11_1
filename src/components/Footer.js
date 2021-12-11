@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from "react-router-dom";
 const Footer = () => {
     return (
         <div>
@@ -60,7 +60,7 @@ const Footer = () => {
                                     Products
                                 </h6>
                                 <p>
-                                    <a href="#!" className="text-reset">Angular</a>
+                                    <Link to="/abc">Shopthethao</Link>
                                 </p>
                                 <p>
                                     <a href="#!" className="text-reset">React</a>
