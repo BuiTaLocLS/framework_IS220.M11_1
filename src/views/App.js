@@ -40,10 +40,6 @@ function App() {
         </Switch>
         <Footer />
       </Router>
-<<<<<<< HEAD
-
-=======
->>>>>>> e1d1c7ba781062c31c9ce96dd481df9d15a62ae6
     </div>
   );
 }
