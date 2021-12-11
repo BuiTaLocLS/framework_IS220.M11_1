@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Link } from "react-router-dom";
 const Footer = () => {
     return (
@@ -45,11 +46,10 @@ const Footer = () => {
                             <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                                 {/* Content */}
                                 <h6 className="text-uppercase fw-bold mb-4">
-                                    <i className="fas fa-gem me-3" />Company name
+                                    <i className="fas fa-gem me-3" />SHOPTHETHAO
                                 </h6>
                                 <p>
-                                    Here you can use rows and columns to organize your footer content. Lorem ipsum
-                                    dolor sit amet, consectetur adipisicing elit.
+                                    Đây là một trang web bán hàng thể thao.
                                 </p>
                             </div>
                             {/* Grid column */}
@@ -57,19 +57,22 @@ const Footer = () => {
                             <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                                 {/* Links */}
                                 <h6 className="text-uppercase fw-bold mb-4">
-                                    Products
+                                    Danh Mục
                                 </h6>
+
+                                <Link to="/gioi-thieu" className="navbar-brand logo">Shopthethao</Link>
+
                                 <p>
-                                    <Link to="/abc">Shopthethao</Link>
+                                    <Link to="/gioi-thieu" className="text-reset">Giới thiệu</Link>
                                 </p>
                                 <p>
-                                    <a href="#!" className="text-reset">React</a>
+                                    <Link to="/product-1" className="text-reset">Quần áo thể thao</Link>
                                 </p>
                                 <p>
-                                    <a href="#!" className="text-reset">Vue</a>
+                                    <Link to="/product-2" className="text-reset">Giày thể thao</Link>
                                 </p>
                                 <p>
-                                    <a href="#!" className="text-reset">Laravel</a>
+                                    <Link to="/product-3" className="text-reset">Phụ kiện thể thao</Link>
                                 </p>
                             </div>
                             {/* Grid column */}
@@ -77,32 +80,36 @@ const Footer = () => {
                             <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                                 {/* Links */}
                                 <h6 className="text-uppercase fw-bold mb-4">
-                                    Useful links
+                                    Liên hệ
                                 </h6>
                                 <p>
-                                    <a href="#!" className="text-reset">Pricing</a>
+                                    <Link to="/cskh" className="text-reset">CSKH</Link>
                                 </p>
                                 <p>
-                                    <a href="#!" className="text-reset">Settings</a>
+                                    <Link to="/uu-dai" className="text-reset">Ưu đãi</Link>
                                 </p>
                                 <p>
-                                    <a href="#!" className="text-reset">Orders</a>
+                                    <Link to="/chinh-sach-doi-tra" className="text-reset">Chính sách đổi trả</Link>
                                 </p>
                                 <p>
-                                    <a href="#!" className="text-reset">Help</a>
+                                    <Link to="/chinh-sach-bao-mat" className="text-reset">Chính sách bảo mật</Link>
                                 </p>
+                                <p>
+                                    <Link to="/dieu-khoan-dich-vu" className="text-reset">Điều khoản dịch vụ</Link>
+                                </p>
+
                             </div>
                             {/* Grid column */}
                             {/* Grid column */}
                             <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                                 {/* Links */}
                                 <h6 className="text-uppercase fw-bold mb-4">
-                                    Contact
+                                    Liên hệ
                                 </h6>
-                                <p><i className="fas fa-home me-3" /> New York, NY 10012, US</p>
+                                <p><i className="fas fa-home me-3" /> UIT</p>
                                 <p>
                                     <i className="fas fa-envelope me-3" />
-                                    info@example.com
+                                    info@uit.edu.vn
                                 </p>
                                 <p><i className="fas fa-phone me-3" /> + 01 234 567 88</p>
                                 <p><i className="fas fa-print me-3" /> + 01 234 567 89</p>
