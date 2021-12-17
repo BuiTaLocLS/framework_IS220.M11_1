@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import './Header.scss';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
 
 class Header extends Component {
     searchToggle = (obj, evt) => {

@@ -5,10 +5,6 @@ const Home = () => {
         <>
             <SalePanner />
             <ProductBlock />
-            <ProductBlock />
-            <ProductBlock />
-            <ProductBlock />
-            <ProductBlock />
         </>
     );
 };
