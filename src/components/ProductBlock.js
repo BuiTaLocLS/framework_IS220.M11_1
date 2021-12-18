@@ -52,27 +52,33 @@ const ProductBlock = () => {
                         {newData && newData.length > 0 && newData.map(item => {
                             return (
                                 <div className="col-md-6 col-lg-4 col-xl-3 mt-5">
-                                    <div id="product-1" className="single-product" key={item.productTypeID}
+                                    <Link to={`/detail-product/${item.productID}`}
                                         style={{
-                                            backgroundImage: `url(${item.img_URL})`,
-                                            backgroundPosition: 'center',
-                                            backgroundRepeat: 'no-repeat',
+                                            textDecoration: 'none',
                                         }}
                                     >
-                                        <div className="part-1">
-                                            <ul>
-                                                <li><a href="#"><i className="bi bi-cart" /></a></li>
-                                                <li><a href="#"><i className="bi bi-heart" /></a></li>
-                                                <li><a href="#"><i className="bi bi-cart-plus" /></a></li>
-                                                <li><a href="#"><i className="bi bi-chevron-bar-expand" /></a></li>
-                                            </ul>
+                                        <div id="product-1" className="single-product" key={item.productID}
+                                            style={{
+                                                backgroundImage: `url(${item.img_URL})`,
+                                                backgroundPosition: 'center',
+                                                backgroundRepeat: 'no-repeat',
+                                            }}
+                                        >
+                                            <div className="part-1">
+                                                <ul>
+                                                    <li><a href="#"><i className="bi bi-cart" /></a></li>
+                                                    <li><a href="#"><i className="bi bi-heart" /></a></li>
+                                                    <li><a href="#"><i className="bi bi-cart-plus" /></a></li>
+                                                    <li><a href="#"><i className="bi bi-chevron-bar-expand" /></a></li>
+                                                </ul>
+                                            </div>
+                                            <div className="part-2">
+                                                <h3 className="product-title">{item.productName}</h3>
+                                                <h4 className="product-old-price">{item.price} VND</h4>
+                                                <h4 className="product-price">{item.price} VND</h4>
+                                            </div>
                                         </div>
-                                        <div className="part-2">
-                                            <h3 className="product-title">{item.productName}</h3>
-                                            <h4 className="product-old-price">{item.price} VND</h4>
-                                            <h4 className="product-price">{item.price} VND</h4>
-                                        </div>
-                                    </div>
+                                    </Link>
                                 </div>
                             )
                         })}

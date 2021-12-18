@@ -1,5 +1,6 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import DetailProduct from './DetailProduct'
 import Intro from './Intro';
 import Home from './Home';
 import {
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route path="/dieu-khoan-dich-vu" exact>
             <Service />
+          </Route>
+          <Route path="/detail-product/:id">
+            <DetailProduct />
           </Route>
         </Switch>
         <Footer />
