@@ -4,6 +4,8 @@ import DetailProduct from './DetailProduct'
 import Intro from './Intro';
 import Home from './Home';
 import Checkout from './Checkout';
+import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
 import {
   BrowserRouter as Router,
   Switch,
@@ -44,6 +46,12 @@ function App() {
           </Route>
           <Route path="/checkout">
             <Checkout />
+          </Route>
+          <Route path="/log-in">
+            <LoginForm />
+          </Route>
+          <Route path="/sign-up">
+            <SignupForm />
           </Route>
         </Switch>
         <Footer />
