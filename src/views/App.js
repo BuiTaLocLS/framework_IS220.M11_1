@@ -3,6 +3,7 @@ import Footer from '../components/Footer';
 import DetailProduct from './DetailProduct'
 import Intro from './Intro';
 import Home from './Home';
+import Checkout from './Checkout';
 import {
   BrowserRouter as Router,
   Switch,
@@ -40,6 +41,9 @@ function App() {
           </Route>
           <Route path="/detail-product/:id">
             <DetailProduct />
+          </Route>
+          <Route path="/checkout">
+            <Checkout />
           </Route>
         </Switch>
         <Footer />
