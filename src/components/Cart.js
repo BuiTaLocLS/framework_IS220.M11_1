@@ -5,6 +5,7 @@ import './Cart.scss';
 const Cart = () => {
   return (
     <div className="container">
+      {/* Cart */}
       <div className="row g-5">
       <div className="col-md-5 col-lg-4 order-md-last">
         <h4 className="d-flex justify-content-between align-items-center mb-3">
@@ -39,6 +40,7 @@ const Cart = () => {
         </ul>
 
       </div>
+      {/* Checkout */}
       <div className="col-md-7 col-lg-8">
         <h4>Thông tin khách hàng</h4>
         <form noValidate>
@@ -91,7 +93,7 @@ const Cart = () => {
           <button className="w-100 btn btn-primary btn-lg" type="submit">Hoàn tất</button>
         </form>
       </div>
-      {/* Cart */}
+      
       </div>
     </div>
   );
