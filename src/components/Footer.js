@@ -60,8 +60,6 @@ const Footer = () => {
                                     Danh Mục
                                 </h6>
 
-                                <Link to="/gioi-thieu" className="navbar-brand logo">Shopthethao</Link>
-
                                 <p>
                                     <Link to="/gioi-thieu" className="text-reset">Giới thiệu</Link>
                                 </p>
