@@ -19,33 +19,12 @@ const DetailProduct = () => {
                         </div>
                         <div className="details col-md-6">
                             <h3 className="product-title">{dataProductsDetails.productName}</h3>
-                            <div className="rating">
-                                <div className="stars">
-                                    <span className="fa fa-star checked" />
-                                    <span className="fa fa-star checked" />
-                                    <span className="fa fa-star checked" />
-                                    <span className="fa fa-star" />
-                                    <span className="fa fa-star" />
-                                </div>
-                                <span className="review-no">41 reviews</span>
-                            </div>
-                            <p className="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
-                            <h4 className="price">current price: <span>$180</span></h4>
-                            <p className="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
-                            <h5 className="sizes">sizes:
-                                <span className="size" data-toggle="tooltip" title="small">s</span>
-                                <span className="size" data-toggle="tooltip" title="medium">m</span>
-                                <span className="size" data-toggle="tooltip" title="large">l</span>
-                                <span className="size" data-toggle="tooltip" title="xtra large">xl</span>
-                            </h5>
-                            <h5 className="colors">colors:
-                                <span className="color orange not-available" data-toggle="tooltip" title="Not In store" />
-                                <span className="color green" />
-                                <span className="color blue" />
-                            </h5>
+
+
+                            <h4 className="price">Giá: <span>{dataProductsDetails.price}</span></h4>
+
                             <div className="action">
-                                <button className="add-to-cart btn btn-default" type="button">add to cart</button>
-                                <button className="like btn btn-default" type="button"><span className="fa fa-heart" /></button>
+                                <button type="button" class="btn btn-primary">Thêm vào giỏ hàng</button>
                             </div>
                         </div>
                     </div>
