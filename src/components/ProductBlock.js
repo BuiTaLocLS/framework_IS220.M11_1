@@ -2,19 +2,17 @@ import { useState, useEffect } from 'react';
 import { Link, useHistory } from "react-router-dom";
 import useFetch from '../customize/fetch';
 import './ProductBlock.scss';
-const ProductBlock = () => {
-
+const ProductBlock = (props) => {
     const [show, setShow] = useState(false);
     const [newData, setNewData] = useState([]);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const { data: dataProducts, isLoading, isError }
-        = useFetch(`http://localhost:54610/api/Product/GetAll`);
+        = useFetch(props.url);
 
     useEffect(() => {
         if (dataProducts && dataProducts.length > 0) {
-            // let data = dataProducts.slice(0, 9);
-            let data = dataProducts;
+            let data = dataProducts.slice(0, 8);
             setNewData(data)
         }
 
@@ -43,8 +41,7 @@ const ProductBlock = () => {
                     <div className="row text-start">
                         <div className="col-md-8 col-lg-6">
                             <div className="header">
-                                <h3>Featured Product</h3>
-                                <h2>Popular Products</h2>
+                                <h2>{props.title}</h2>
                             </div>
                         </div>
                     </div>
@@ -66,16 +63,13 @@ const ProductBlock = () => {
                                         >
                                             <div className="part-1">
                                                 <ul>
-                                                    <li><a href="#"><i className="bi bi-cart" /></a></li>
-                                                    <li><a href="#"><i className="bi bi-heart" /></a></li>
-                                                    <li><a href="#"><i className="bi bi-cart-plus" /></a></li>
-                                                    <li><a href="#"><i className="bi bi-chevron-bar-expand" /></a></li>
+                                                    <li><a href="#"><button type="button" className="btn btn-primary">Thêm vào giỏ</button>
+                                                    </a></li>
                                                 </ul>
                                             </div>
                                             <div className="part-2">
                                                 <h3 className="product-title">{item.productName}</h3>
-                                                <h4 className="product-old-price">{item.price} VND</h4>
-                                                <h4 className="product-price">{item.price} VND</h4>
+                                                <h4 className="product-price">Giá: {item.price} VND</h4>
                                             </div>
                                         </div>
                                     </Link>
