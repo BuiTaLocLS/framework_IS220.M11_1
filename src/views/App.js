@@ -53,6 +53,7 @@ function App() {
           </Route>
           <Route path="/catalog">
             <Catalog />
+           </Route>
           <Route path="/add-product" exact>
             <AddProduct />
           </Route>
