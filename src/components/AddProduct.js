@@ -59,7 +59,21 @@ const AddProduct = () => {
                     Please select a valid country.
                   </div>
                 </div>
-              </div>      
+              </div>
+              <div className="row">
+                <div className="col-md-5 mb-3" className="form-label">
+                  <label htmlFor="supplier">Nhà cung cấp</label>
+                  <select className="form-select form-select-lg mb-3" id="supplier" required>
+                    <option selected>Chọn nhà cung cấp</option>
+                    <option value>Adidas</option>
+                    <option value>Mira</option>
+                    <option value>Pan Sonic</option>
+                  </select>
+                  <div className="invalid-feedback">
+                    Please select a valid country.
+                  </div>
+                </div>
+              </div>     
             </div>
             <button className="w-100 btn btn-primary btn-lg" type="submit">Hoàn tất</button>
           </form>
