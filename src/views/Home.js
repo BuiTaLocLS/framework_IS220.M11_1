@@ -8,6 +8,7 @@ const Home = () => {
             <ProductBlock title="Giày thể thao" url="http://localhost:54610/api/Product/GetByType/Giày thể thao" />
             <ProductBlock title="Quần áo bóng đá" url="http://localhost:54610/api/Product/GetByType/Quần áo bóng đá" />
             <ProductBlock title="Túi thể thao" url="http://localhost:54610/api/Product/GetByType/Túi thể thao" />
+            <ProductBlock title="Bó gói bóng đá" url="http://localhost:54610/api/Product/GetByType/Bó gói bóng đá" />
         </>
     );
 };

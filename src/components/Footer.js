@@ -92,7 +92,6 @@ const Footer = () => {
                 {/* Copyright */}
             </footer>
             {/* Footer */}
-
         </div>
     );
 };
