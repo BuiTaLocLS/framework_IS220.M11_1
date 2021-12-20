@@ -7,6 +7,8 @@ import Catalog from './Catalog';
 import Checkout from './Checkout';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
+import ListCart from './ListCart';
+import Contact from './Contact';
 import {
   BrowserRouter as Router,
   Switch,
@@ -53,8 +55,15 @@ function App() {
           </Route>
           <Route path="/catalog">
             <Catalog />
+          </Route>
+          <Route path="/contact">
+            <Contact />
+          </Route>
           <Route path="/add-product" exact>
             <AddProduct />
+          </Route>
+          <Route path="/list-cart" exact>
+            <ListCart />
           </Route>
         </Switch>
         <Footer />
