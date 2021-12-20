@@ -4,7 +4,7 @@ import './Cart.scss';
 
 const Cart = () => {
   return (
-    <div className="container">
+    <div className="container mt-5">
       {/* Cart */}
       <div className="row g-5">
       <div className="col-md-5 col-lg-4 order-md-last">
@@ -35,7 +35,7 @@ const Cart = () => {
           </li>
           <li className="list-group-item d-flex justify-content-between">
             <span>Total (USD)</span>
-            <strong>$20</strong>
+            <strong>$25</strong>
           </li>
         </ul>
 
