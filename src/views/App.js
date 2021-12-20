@@ -1,6 +1,7 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import DetailProduct from './DetailProduct'
+import AddProduct from '../components/AddProduct';
 import Home from './Home';
 import Catalog from './Catalog';
 import Checkout from './Checkout';
@@ -28,7 +29,6 @@ function App() {
             <Search />
           </Route>
           <Route path="/gioi-thieu">
-
           </Route>
           <Route path="/chinh-sach-doi-tra" exact>
             <ReturnPolicy />
@@ -42,17 +42,19 @@ function App() {
           <Route path="/detail-product/:id">
             <DetailProduct />
           </Route>
-          <Route path="/checkout">
+          <Route path="/checkout" exact>
             <Checkout />
           </Route>
-          <Route path="/log-in">
+          <Route path="/log-in" exact>
             <LoginForm />
           </Route>
-          <Route path="/sign-up">
+          <Route path="/sign-up" exact>
             <SignupForm />
           </Route>
           <Route path="/catalog">
             <Catalog />
+          <Route path="/add-product" exact>
+            <AddProduct />
           </Route>
         </Switch>
         <Footer />

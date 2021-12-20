@@ -38,7 +38,6 @@ const Cart = () => {
               <strong>$20</strong>
             </li>
           </ul>
-
         </div>
         {/* Checkout */}
         <div className="col-md-7 col-lg-8">

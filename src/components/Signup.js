@@ -34,6 +34,13 @@ const Signup = () => {
                         Password is required
                       </div>
                     </div>
+                    <div className="mb-3">
+                      <label className="mb-2 text-muted" htmlFor="password">Nhập lại mật khẩu</label>
+                      <input id="password" type="password" className="form-control" name="password" required />
+                      <div className="invalid-feedback">
+                        Password is required
+                      </div>
+                    </div>
                     
                     <div className="align-items-center">
                       <button type="submit" className="btn btn-primary ms-auto">
@@ -44,7 +51,7 @@ const Signup = () => {
                 </div>
                 <div className="card-footer py-3 border-0">
                   <div className="text-center">
-                    Bạn đã có tài khoản? <Link to="/log-in" className="text-dark">Đăng nhập</Link>
+                    Bạn đã có tài khoản? <Link to="/log-in" className="text-dark"> Đăng nhập</Link>
                   </div>
                 </div>
               </div>
