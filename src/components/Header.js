@@ -7,7 +7,7 @@ const Header = () => {
         <div>
             <Navbar bg="light" expand="lg" className="fixed-top top-header">
                 <Container fluid>
-                    <Navbar.Brand href="#">Shopthethao</Navbar.Brand>
+                    <Navbar.Brand href="/">Shopthethao</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
@@ -41,7 +41,8 @@ const Header = () => {
                             navbarScroll
                         >
                             <Nav.Link href="#action1">Cart(0)</Nav.Link>
-                            <Nav.Link href="#action2">Login</Nav.Link>
+                            <Nav.Link href="/log-in">Login</Nav.Link>
+                            <Nav.Link href="/sign-up">Sign up</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

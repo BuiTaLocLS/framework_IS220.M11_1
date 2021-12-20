@@ -1,7 +1,7 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import DetailProduct from './DetailProduct'
-import Intro from './Intro';
+import AddProduct from '../components/AddProduct';
 import Home from './Home';
 import Checkout from './Checkout';
 import LoginForm from './LoginForm';
@@ -29,9 +29,6 @@ function App() {
           <Route path="/tim-kiem">
             <Search />
           </Route>
-          <Route path="/gioi-thieu">
-            <Intro />
-          </Route>
           <Route path="/chinh-sach-doi-tra" exact>
             <ReturnPolicy />
           </Route>
@@ -44,14 +41,17 @@ function App() {
           <Route path="/detail-product/:id">
             <DetailProduct />
           </Route>
-          <Route path="/checkout">
+          <Route path="/checkout" exact>
             <Checkout />
           </Route>
-          <Route path="/log-in">
+          <Route path="/log-in" exact>
             <LoginForm />
           </Route>
-          <Route path="/sign-up">
+          <Route path="/sign-up" exact>
             <SignupForm />
+          </Route>
+          <Route path="/add-product" exact>
+            <AddProduct />
           </Route>
         </Switch>
         <Footer />

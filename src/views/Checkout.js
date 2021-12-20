@@ -1,4 +1,5 @@
 import Cart from "../components/Cart";
+
 const Checkout = () => {
     return (
         <>
