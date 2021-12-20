@@ -1,8 +1,8 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import DetailProduct from './DetailProduct'
-import Intro from './Intro';
 import Home from './Home';
+import Catalog from './Catalog';
 import Checkout from './Checkout';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
@@ -15,8 +15,6 @@ import {
 function App() {
   return (
     <div>
-
-
       <Router>
         <Header />
         <Switch>
@@ -30,7 +28,7 @@ function App() {
             <Search />
           </Route>
           <Route path="/gioi-thieu">
-            <Intro />
+
           </Route>
           <Route path="/chinh-sach-doi-tra" exact>
             <ReturnPolicy />
@@ -52,6 +50,9 @@ function App() {
           </Route>
           <Route path="/sign-up">
             <SignupForm />
+          </Route>
+          <Route path="/catalog">
+            <Catalog />
           </Route>
         </Switch>
         <Footer />

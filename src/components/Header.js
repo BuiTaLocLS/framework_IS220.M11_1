@@ -18,10 +18,12 @@ const Header = () => {
                             <Nav.Link href="#action1">Sản phẩm</Nav.Link>
                             <Nav.Link href="#action2">Liên hệ</Nav.Link>
                             <NavDropdown title="Doanh mục" id="navbarScrollingDropdown">
-                                <NavDropdown.Item href="#action3">Giày</NavDropdown.Item>
-                                <NavDropdown.Item href="#action4">Quần áo thể thao</NavDropdown.Item>
+                                <NavDropdown.Item href="#action3">Giày thể thao</NavDropdown.Item>
+                                <NavDropdown.Item href="#action4">Quần áo bóng đá</NavDropdown.Item>
+                                <NavDropdown.Item href="#action5">Túi thể thao</NavDropdown.Item>
+                                <NavDropdown.Item href="#action6">Bó gói bóng đá</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action5">
+                                <NavDropdown.Item href="#action7">
                                     Khác
                                 </NavDropdown.Item>
                             </NavDropdown>
