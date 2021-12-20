@@ -1,5 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Container, FormControl, Form, Button } from 'react-bootstrap';
+import { Link, useHistory } from "react-router-dom";
+
 import './Header.scss';
 
 const Header = () => {
@@ -7,7 +9,7 @@ const Header = () => {
         <div>
             <Navbar bg="light" expand="lg" className="fixed-top top-header">
                 <Container fluid>
-                    <Navbar.Brand href="/">Shopthethao</Navbar.Brand>
+                    <Navbar.Brand className="logo-branch"><Link to="/">Shopthethao</Link></Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
@@ -15,18 +17,19 @@ const Header = () => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link href="#action1">Sản phẩm</Nav.Link>
-                            <Nav.Link href="#action2">Liên hệ</Nav.Link>
+                            <Nav.Link><Link to="/catalog">Sản phẩm</Link></Nav.Link>
+
                             <NavDropdown title="Doanh mục" id="navbarScrollingDropdown">
-                                <NavDropdown.Item href="#action3">Giày thể thao</NavDropdown.Item>
-                                <NavDropdown.Item href="#action4">Quần áo bóng đá</NavDropdown.Item>
-                                <NavDropdown.Item href="#action5">Túi thể thao</NavDropdown.Item>
-                                <NavDropdown.Item href="#action6">Bó gói bóng đá</NavDropdown.Item>
+                                <NavDropdown.Item><Link to="/catalog">Giày thể thao</Link></NavDropdown.Item>
+                                <NavDropdown.Item><Link to="/catalog">Quần áo bóng đá</Link></NavDropdown.Item>
+                                <NavDropdown.Item><Link to="/catalog">Túi thể thao</Link></NavDropdown.Item>
+                                <NavDropdown.Item><Link to="/catalog">Bó gói bóng đá</Link></NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action7">
-                                    Khác
+                                <NavDropdown.Item>
+                                    <Link to="/catalog">Khác</Link>
                                 </NavDropdown.Item>
                             </NavDropdown>
+                            <Nav.Link><Link to="/contact">Liên hệ</Link></Nav.Link>
                         </Nav>
                         <Form className="d-flex me-5">
                             <FormControl
@@ -42,15 +45,15 @@ const Header = () => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link href="#action1">Cart(0)</Nav.Link>
-                            <Nav.Link href="/log-in">Login</Nav.Link>
-                            <Nav.Link href="/sign-up">Sign up</Nav.Link>
+                            <Nav.Link><Link to="/list-cart">Cart(0)</Link></Nav.Link>
+                            <Nav.Link><Link to="/log-in">Login</Link></Nav.Link>
+                            <Nav.Link><Link to="/sign-up">Sign up</Link></Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
             <div class="fix-top"></div>
-        </div>
+        </div >
     );
 };
 
