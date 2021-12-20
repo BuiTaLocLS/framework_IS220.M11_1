@@ -17,7 +17,7 @@ const Contact = () => {
 
                                 <div className="col-md-6">
                                     <div className="md-form mb-0">
-                                        <label htmlFor="name" className>Your name</label>
+                                        <label htmlFor="name" className="mb-1">Your name</label>
                                         <input type="text" id="name" name="name" className="form-control" />
 
                                     </div>
@@ -26,7 +26,7 @@ const Contact = () => {
 
                                 <div className="col-md-6">
                                     <div className="md-form mb-0">
-                                        <label htmlFor="email" className>Your email</label>
+                                        <label htmlFor="email" className="mb-1">Your email</label>
                                         <input type="text" id="email" name="email" className="form-control" />
 
                                     </div>
@@ -37,7 +37,7 @@ const Contact = () => {
                             <div className="row mt-2">
                                 <div className="col-md-12">
                                     <div className="md-form mb-0">
-                                        <label htmlFor="subject" className>Subject</label>
+                                        <label htmlFor="subject" className="mb-1">Subject</label>
                                         <input type="text" id="subject" name="subject" className="form-control" />
 
                                     </div>
@@ -48,7 +48,7 @@ const Contact = () => {
 
                                 <div className="col-md-12">
                                     <div className="md-form">
-                                        <label htmlFor="message">Your message</label>
+                                        <label htmlFor="message" className="mb-1">Your message</label>
                                         <textarea type="text" id="message" name="message" rows={2} className="form-control md-textarea" defaultValue={""} />
 
                                     </div>
@@ -57,7 +57,7 @@ const Contact = () => {
 
                         </form>
                         <div className="text-center text-md-left mt-3">
-                            <a className="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
+                            <a className="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Gửi</a>
                         </div>
                         <div className="status" />
                     </div>

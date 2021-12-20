@@ -1,8 +1,10 @@
-import React from 'react';
+import { useState } from 'react';
+import InputNumber from 'react-input-number';
 import './DetailProduct.scss';
 import useFetch from '../customize/fetch';
 import { useParams, useHistory } from 'react-router-dom';
 const DetailProduct = () => {
+    const [num, setNum] = useState(1);
     let { id } = useParams();
     const { data: dataProductsDetails, isLoading, isError }
         = useFetch(`http://localhost:54610/api/Product/GetbyID/${id}`);
@@ -24,7 +26,11 @@ const DetailProduct = () => {
 
                             <h4 className="price">Giá: <span>{dataProductsDetails.price} </span>VNĐ</h4>
 
-                            <div className="action">
+                            <div class="form-outline col-2">
+                                <input type="number" id="typeNumber" class="form-control" defaultValue={1} />
+                            </div>
+
+                            <div className="action mt-3">
                                 <button type="button" class="btn btn-primary">Thêm vào giỏ hàng</button>
                             </div>
                         </div>
