@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link, useHistory } from "react-router-dom";
 import useFetch from '../customize/fetch';
 import './ProductBlock.scss';
+import { CartContext } from '../contexts/CartContext';
+
 const ProductBlock = (props) => {
+    const { handleBuyClick } = useContext(CartContext);
     const [show, setShow] = useState(false);
     const [newData, setNewData] = useState([]);
     const handleClose = () => setShow(false);
@@ -62,10 +65,7 @@ const ProductBlock = (props) => {
                                             }}
                                         >
                                             <div className="part-1">
-                                                <ul>
-                                                    <li><a href="#"><button type="button" className="btn btn-primary">Thêm vào giỏ</button>
-                                                    </a></li>
-                                                </ul>
+
                                             </div>
                                             <div className="part-2">
                                                 <h3 className="product-title">{item.productName}</h3>
@@ -85,10 +85,10 @@ const ProductBlock = (props) => {
                         {/* Single Product */}
 
                     </div>
-                </div>
-            </section>
+                </div >
+            </section >
 
-        </div>
+        </div >
     );
 };
 

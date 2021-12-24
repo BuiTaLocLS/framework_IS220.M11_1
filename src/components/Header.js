@@ -1,12 +1,13 @@
-import React, {useState, useEffect } from 'react';
+import React, {useState, useEffect,useContext } from 'react';
 import { Navbar, Nav, NavDropdown, Container, FormControl, Form, Button } from 'react-bootstrap';
 import { Link, useHistory } from "react-router-dom";
+import { CartContext } from '../contexts/CartContext';
 import getSessionStorage from "../customize/getSessionStorage"
 import useFetch from '../customize/fetch';
-
 import './Header.scss';
 
 const Header = () => {
+  const { cart } = useContext(CartContext);
     const [userID, setUserID] = useState(
         getSessionStorage('userID', false)
       );
@@ -14,6 +15,7 @@ const Header = () => {
       const {data: user, loading, isError} = useFetch(`http://localhost:54610/api/User/GetbyID/${userID}`);
 
     console.log("user", user)
+
     return (
         <div>
             <Navbar bg="light" expand="lg" className="fixed-top top-header">
@@ -26,13 +28,13 @@ const Header = () => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link><Link to="/catalog">Sản phẩm</Link></Nav.Link>
+                            <Nav.Link><Link to="/catalog/">Sản phẩm</Link></Nav.Link>
 
                             <NavDropdown title="Doanh mục" id="navbarScrollingDropdown">
-                                <NavDropdown.Item><Link to="/catalog">Giày thể thao</Link></NavDropdown.Item>
-                                <NavDropdown.Item><Link to="/catalog">Quần áo bóng đá</Link></NavDropdown.Item>
-                                <NavDropdown.Item><Link to="/catalog">Túi thể thao</Link></NavDropdown.Item>
-                                <NavDropdown.Item><Link to="/catalog">Bó gói bóng đá</Link></NavDropdown.Item>
+                                <NavDropdown.Item><Link to="/catalog/3">Giày thể thao</Link></NavDropdown.Item>
+                                <NavDropdown.Item><Link to="/catalog/5">Quần áo bóng đá</Link></NavDropdown.Item>
+                                <NavDropdown.Item><Link to="/catalog/7">Túi thể thao</Link></NavDropdown.Item>
+                                <NavDropdown.Item><Link to="/catalog/6">Bó gói bóng đá</Link></NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item>
                                     <Link to="/catalog">Khác</Link>
@@ -54,8 +56,8 @@ const Header = () => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link><Link to="/list-cart">Cart(0)</Link></Nav.Link>
-                            
+                            <Nav.Link><Link to="/list-cart">Cart({cart.length})</Link></Nav.Link>
+
                             <Nav.Link><Link to="/log-in">Login</Link></Nav.Link>
                             <Nav.Link><Link to="/sign-up">Sign up</Link></Nav.Link>
                         

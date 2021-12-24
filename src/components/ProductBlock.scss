@@ -87,9 +87,8 @@ a:hover {
     transition: bottom 0.5s, opacity 0.5s;
 }
 
-.section-products .single-product:hover .part-1 ul {
-    bottom : 60px;
-    opacity: 1;
+.single-product:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .section-products .single-product .part-1 ul li {
