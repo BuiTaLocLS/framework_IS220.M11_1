@@ -7,7 +7,7 @@ const ProductBlock = (props) => {
     const [newData, setNewData] = useState([]);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const { data: dataProducts, isLoading, isError }
+    const { data: dataProducts, loading, isError }
         = useFetch(props.url);
 
     useEffect(() => {
@@ -46,7 +46,7 @@ const ProductBlock = (props) => {
                         </div>
                     </div>
                     <div className="row">
-                        {newData && newData.length > 0 && newData.map(item => {
+                        {loading === false && newData && newData.length > 0 && newData.map(item => {
                             return (
                                 <div className="col-md-6 col-lg-4 col-xl-3 mt-5">
                                     <Link to={`/detail-product/${item.productID}`}
@@ -77,8 +77,10 @@ const ProductBlock = (props) => {
                             )
                         })}
 
-                        {isLoading === true &&
-                            <div style={{ textAlign: 'center !important', width: '100%' }}>Loading data...</div>
+                        {loading === true
+                            && <tr className="mt-5">
+                                <td colSpan='5' style={{ 'textAlign': 'center' }}>  Loading...</td>
+                            </tr>
                         }
                         {/* Single Product */}
 

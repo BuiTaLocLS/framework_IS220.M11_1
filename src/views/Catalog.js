@@ -8,7 +8,7 @@ const Catalog = () => {
   const [newData, setNewData] = useState([]);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const { data: dataProducts, isLoading, isError }
+  const { data: dataProducts, loading, isError }
     = useFetch(`http://localhost:54610/api/Product/GetAll`);
 
   useEffect(() => {
@@ -173,29 +173,37 @@ const Catalog = () => {
         </div>
         <div className="col-9">
           <div className="row">
-            {newData && newData.length > 0 && newData.map(item => {
+            {loading === false && newData && newData.length > 0 && newData.map(item => {
               return (
                 <div className="col-3" key={item.productID}>
                   <div className="">
-                    <div className="card-img-top">
-                      <img src={item.img_URL} className="img-fluid" alt="Card image cap" />
-                    </div>
-                    <div className="card-body text-center">
-                      <h6 className="card-title">
-                        <a href="product.html" className=" font-weight-bold text-dark small">{item.productName}</a>
-                      </h6>
-                      <h5 className="card-price small">
-                        <i>
-                          Giá: {item.price} VND</i>
-                      </h5>
-                    </div>
+                    <Link to={`/detail-product/${item.productID}`}
+                      style={{
+                        textDecoration: 'none',
+                      }}
+                    >
+                      <div className="card-img-top">
+                        <img src={item.img_URL} className="img-fluid" alt="Card image cap" />
+                      </div>
+                      <div className="card-body text-center">
+                        <h6 className="card-title">
+                          <a href="product.html" className=" font-weight-bold text-dark small">{item.productName}</a>
+                        </h6>
+                        <h5 className="card-price small">
+                          <i>
+                            Giá: {item.price} VND</i>
+                        </h5>
+                      </div>
+                    </Link>
                   </div>
                 </div>
               )
             })}
 
-            {isLoading === true &&
-              <div style={{ textAlign: 'center !important', width: '100%' }}>Loading data...</div>
+            {loading === true
+              && <tr className="mt-5">
+                <td colSpan='5' style={{ 'textAlign': 'center' }}>  Loading...</td>
+              </tr>
             }
             {/* Single Product */}
           </div>
