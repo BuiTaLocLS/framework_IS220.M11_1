@@ -7,29 +7,41 @@ export const UserContext = createContext()
 
 const LoginForm = () => {
 
-  const [accountID, setAccountID] = useState({accountID: ""});
+  let userID = -1;
   const [error, setError] = useState("");
+  
 
-  const accountList = {
-    accountID: "a",
-    accountPassword: "a"
-  }
+  const {data: accountList, loading, isError} = useFetch("http://localhost:54610/api/Account/GetAll");
+
+  // danh sach account hien co
+
+  const isLogin = false;
+  
 
   const login = details => {
-    for(let item = 0; item < accountList.accountID.length; item++){
-      if(details.accountID === accountList.accountID[item] && details.accountPassword === accountList.accountPassword[item]){
-        console.log("complete");
+    console.log("account bd: ", accountList[0].userID);
+    
+    for(let item in accountList){
+      if(details.accountID === accountList[item].accountID && details.accountPassword === accountList[item].accountPassword){
+        console.log("complete")
         
-        setAccountID({
-          accountId: details.accountID
-        })
+        userID = accountList[item].userID
+
+        if(userID != -1){
+    
+          sessionStorage.setItem('userID', JSON.stringify(userID));
+        
+      }
+
+        window.location.href = "http://localhost:3000/"; 
+        
         break;
       }
-      if(item == accountList.accountID.length - 1){
+      if(item == accountList[item].length - 1){
         setError("FAIL")
       }
     }
-    console.log(details);
+    console.log("session: ",userID);
   }
 
   const logout = details => {
@@ -37,7 +49,7 @@ const LoginForm = () => {
   }
   
   return (
-     <Login login={login} error={error}/>
+     <Login login={login} error={error} />
   );
 }
 

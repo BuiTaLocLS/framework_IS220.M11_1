@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../views/LoginForm";
 
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Login = ({login, error}) => {
@@ -10,6 +9,7 @@ const Login = ({login, error}) => {
   accountPassword: ""
   });
 
+  
   const submitHandler = e => {
     e.preventDefault();
     
@@ -35,7 +35,7 @@ const Login = ({login, error}) => {
                     <label className="mb-2 text-muted" htmlFor="account">Tên tài khoản</label>
                     <input 
                       id="account" 
-                      type="email" 
+                      type="text" 
                       className="form-control" 
                       name="account" 
                       required
