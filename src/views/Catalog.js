@@ -1,9 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import useFetch from '../customize/fetch';
 import '../components/ProductBlock.scss';
+
 const Catalog = () => {
+  let { idType } = useParams();
   const [show, setShow] = useState(false);
   const [newData, setNewData] = useState([]);
   const handleClose = () => setShow(false);
@@ -11,13 +13,37 @@ const Catalog = () => {
   const { data: dataProducts, loading, isError }
     = useFetch(`http://localhost:54610/api/Product/GetAll`);
 
+
   useEffect(() => {
     if (dataProducts && dataProducts.length > 0) {
       setNewData(dataProducts)
     }
+    console.log("id", idType);
+    if (idType && idType > 0) {
+      filterProductsbyType(idType);
+    }
 
-    console.log(">>>newData: ", newData)
-  }, [dataProducts]);
+    document.querySelectorAll(`#type${idType}`).forEach(el => el.checked = true);
+
+  }, [dataProducts, idType]);
+
+  const [checked, setChecked] = useState(false);
+
+  const filterProductsbyType = (typeNumber) => {
+    let curentProducts = dataProducts;
+    curentProducts = curentProducts.filter(item => item.productTypeID == typeNumber)
+    setNewData(curentProducts)
+  }
+
+  const filterProducts = (typeNumber) => {
+    let curentProducts = dataProducts;
+    if (checked == false) {
+      curentProducts = curentProducts.filter(item => item.productTypeID == typeNumber)
+      setNewData(curentProducts)
+    } else {
+      setNewData(dataProducts);
+    }
+  }
 
   return (
     <div className="container pt-5">
@@ -28,9 +54,12 @@ const Catalog = () => {
             <div><div class="form-check">
               <input
                 class="form-check-input"
-                type="checkbox"
+                type="radio"
                 value=""
-                id="flexCheckDefault"
+                name="type"
+                id="type3"
+                defaultChecked={checked}
+                onChange={() => filterProducts(3)}
               />
               <label class="form-check-label" for="flexCheckDefault">
                 Giày thể thao
@@ -39,9 +68,12 @@ const Catalog = () => {
               <div class="form-check">
                 <input
                   class="form-check-input"
-                  type="checkbox"
+                  type="radio"
                   value=""
-                  id="flexCheckDefault"
+                  name="type"
+                  id="type5"
+                  defaultChecked={checked}
+                  onChange={() => filterProducts(5)}
                 />
                 <label class="form-check-label" for="flexCheckDefault">
                   Quần áo bóng đá
@@ -50,9 +82,12 @@ const Catalog = () => {
               <div class="form-check">
                 <input
                   class="form-check-input"
-                  type="checkbox"
+                  type="radio"
                   value=""
-                  id="flexCheckDefault"
+                  name="type"
+                  id="type7"
+                  defaultChecked={checked}
+                  onChange={() => filterProducts(7)}
                 />
                 <label class="form-check-label" for="flexCheckDefault">
                   Túi thể thao
@@ -61,23 +96,15 @@ const Catalog = () => {
               <div class="form-check">
                 <input
                   class="form-check-input"
-                  type="checkbox"
+                  type="radio"
                   value=""
-                  id="flexCheckDefault"
+                  name="type"
+                  id="type6"
+                  defaultChecked={checked}
+                  onChange={() => filterProducts(6)}
                 />
                 <label class="form-check-label" for="flexCheckDefault">
                   Bó gói bóng đá
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label class="form-check-label" for="flexCheckDefault">
-                  Khác
                 </label>
               </div>
             </div>
@@ -182,7 +209,7 @@ const Catalog = () => {
                         textDecoration: 'none',
                       }}
                     >
-                      <div className="card-img-top">
+                      <div className="card-img-top single-product">
                         <img src={item.img_URL} className="img-fluid" alt="Card image cap" />
                       </div>
                       <div className="card-body text-center">

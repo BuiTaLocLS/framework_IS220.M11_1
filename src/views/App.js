@@ -9,6 +9,7 @@ import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import ListCart from './ListCart';
 import Contact from './Contact';
+import CartConText from '../contexts/CartContext';
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,56 +19,61 @@ import {
 function App() {
   return (
     <div>
-      <Router>
-        <Header />
-        <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          {/* <Route path="/user/:id">
+      <CartConText>
+        <Router>
+          <Header />
+          <Switch>
+            <Route path="/" exact>
+              <Home />
+            </Route>
+            {/* <Route path="/user/:id">
           <DetailUser />
         </Route> */}
-          <Route path="/tim-kiem">
-            <Search />
-          </Route>
-          <Route path="/gioi-thieu">
-          </Route>
-          <Route path="/chinh-sach-doi-tra" exact>
-            <ReturnPolicy />
-          </Route>
-          <Route path="/chinh-sach-bao-mat" exact>
-            <SecurityPolicy />
-          </Route>
-          <Route path="/dieu-khoan-dich-vu" exact>
-            <Service />
-          </Route>
-          <Route path="/detail-product/:id">
-            <DetailProduct />
-          </Route>
-          <Route path="/checkout" exact>
-            <Checkout />
-          </Route>
-          <Route path="/log-in" exact>
-            <LoginForm />
-          </Route>
-          <Route path="/sign-up" exact>
-            <SignupForm />
-          </Route>
-          <Route path="/catalog">
-            <Catalog />
-          </Route>
-          <Route path="/contact">
-            <Contact />
-          </Route>
-          <Route path="/add-product" exact>
-            <AddProduct />
-          </Route>
-          <Route path="/list-cart" exact>
-            <ListCart />
-          </Route>
-        </Switch>
-        <Footer />
-      </Router>
+            <Route path="/tim-kiem">
+              <Search />
+            </Route>
+            <Route path="/gioi-thieu">
+            </Route>
+            <Route path="/chinh-sach-doi-tra" exact>
+              <ReturnPolicy />
+            </Route>
+            <Route path="/chinh-sach-bao-mat" exact>
+              <SecurityPolicy />
+            </Route>
+            <Route path="/dieu-khoan-dich-vu" exact>
+              <Service />
+            </Route>
+            <Route path="/detail-product/:id">
+              <DetailProduct />
+            </Route>
+            <Route path="/checkout" exact>
+              <Checkout />
+            </Route>
+            <Route path="/log-in" exact>
+              <LoginForm />
+            </Route>
+            <Route path="/sign-up" exact>
+              <SignupForm />
+            </Route>
+            <Route path="/catalog/:idType">
+              <Catalog />
+            </Route>
+            <Route path="/catalog">
+              <Catalog />
+            </Route>
+            <Route path="/contact">
+              <Contact />
+            </Route>
+            <Route path="/add-product" exact>
+              <AddProduct />
+            </Route>
+            <Route path="/list-cart" exact>
+              <ListCart />
+            </Route>
+          </Switch>
+          <Footer />
+        </Router>
+      </CartConText>
     </div>
   );
 }

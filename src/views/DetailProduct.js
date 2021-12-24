@@ -1,15 +1,21 @@
-import { useState } from 'react';
-import InputNumber from 'react-input-number';
+import { useState, useContext } from 'react';
 import './DetailProduct.scss';
 import useFetch from '../customize/fetch';
 import { useParams, useHistory } from 'react-router-dom';
+import { CartContext } from '../contexts/CartContext';
 const DetailProduct = () => {
+    const { handleBuyClick } = useContext(CartContext);
     const [num, setNum] = useState(1);
     let { id } = useParams();
     const { data: dataProductsDetails, isLoading, isError }
         = useFetch(`http://localhost:54610/api/Product/GetbyID/${id}`);
-    console.log(dataProductsDetails);
     let mota = ["", "", "", "Trọng lượng giày được giảm thiểu hơn so với các phiên bản tiền nhiệm. Đế giày mỏng, phần đế được thiết kế từ chất liệu cao su cao cấp và được thiết kế mặt đế với nhiều chi tiêt đường rãnh, kẻ ngang có độ nông cạn khác nhau, tạo độ bám tốt và chống trơn trượt trên sân.", "Trọng lượng giày được giảm thiểu hơn so với các phiên bản tiền nhiệm. Đế giày mỏng, phần đế được thiết kế từ chất liệu cao su cao cấp và được thiết kế mặt đế với nhiều chi tiêt đường rãnh, kẻ ngang có độ nông cạn khác nhau, tạo độ bám tốt và chống trơn trượt trên sân.", "Độ co dãn tốt, giúp thoáng mát và thoải mái khi vận động. Màu áo quần cực bền, in ấn có độ thẩm mỹ cao, không bong tróc.", "", "Thiết kế 2 ngăn, ngăn lớn sử dụng đựng giày hoặc các vật dụng lớn khác, ngăn nhỏ thường sử dụng đựng quần áo, điện thoại, nước,... Ngoài ra, 2 ngăn còn giúp ngăn cản mùi hôi giữa giày, quần áo sau khi sử dụng với những vật dụng khác."]
+
+    const handleOnChangeNum = (event) => {
+        setNum(event.target.value);
+        console.log(num)
+    }
+
     return (
         <div className="container">
             <div className="card">
@@ -27,11 +33,17 @@ const DetailProduct = () => {
                             <h4 className="price">Giá: <span>{dataProductsDetails.price} </span>VNĐ</h4>
 
                             <div class="form-outline col-2">
-                                <input type="number" id="typeNumber" class="form-control" defaultValue={1} />
+                                <input min={1} type="number" id="typeNumber" class="form-control" value={num} onChange={(event) => handleOnChangeNum(event)} />
                             </div>
 
                             <div className="action mt-3">
-                                <button type="button" class="btn btn-primary">Thêm vào giỏ hàng</button>
+                                <button type="button" class="btn btn-primary" onClick={() => handleBuyClick({
+                                    productID: dataProductsDetails.productID,
+                                    productName: dataProductsDetails.productName,
+                                    price: dataProductsDetails.price,
+                                    img_URL: dataProductsDetails.img_URL,
+                                    quantity: num,
+                                })}>Thêm vào giỏ hàng</button>
                             </div>
                         </div>
                     </div>
