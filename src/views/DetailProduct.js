@@ -6,7 +6,7 @@ const DetailProduct = () => {
     let { id } = useParams();
     const { data: dataProductsDetails, isLoading, isError }
         = useFetch(`http://localhost:54610/api/Product/GetbyID/${id}`);
-    console.log(dataProductsDetails);
+    console.log("dateProduct", dataProductsDetails);
     return (
         <div className="container">
             <div className="card">
