@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useState, useContext } from "react";
+import { UserContext } from "../views/LoginForm";
+
+import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const Login = ({login, error}) => {
+  const [details, setDetails] = useState({
+  accountID: "", 
+  accountPassword: ""
+  });
+
+  const submitHandler = e => {
+    e.preventDefault();
+    
+    login(details);
+  }
+
   return (
 
        <div className="container h-100">
@@ -12,13 +26,24 @@ const Login = () => {
             </div>
             <div className="card shadow-lg">
               <div className="card-body p-5">
-                <h1 className="fs-4 card-title fw-bold mb-4">Đăng nhập</h1>
-                <form method="POST" className="needs-validation" noValidate autoComplete="off">
+                <h1 className="fs-4 card-title fw-bold mb-4">Đăng nhập</h1> 
+                
+                
+                {/* <form method="POST" className="needs-validation" noValidate autoComplete="off"  > */}
+                <form  className="needs-validation" onSubmit={submitHandler} noValidate autoComplete="off"  >
                   <div className="mb-3">
-                    <label className="mb-2 text-muted" htmlFor="email">Tên email</label>
-                    <input id="email" type="email" className="form-control" name="email" required />
+                    <label className="mb-2 text-muted" htmlFor="account">Tên tài khoản</label>
+                    <input 
+                      id="account" 
+                      type="email" 
+                      className="form-control" 
+                      name="account" 
+                      required
+                      onChange={e => setDetails({...details, accountID: e.target.value})}
+                      value ={details.accountID}
+                    />
                     <div className="invalid-feedback">
-                      Tên email không được bỏ trống
+                      Tên tài khoản không được bỏ trống
                     </div>
                   </div>
                   <div className="mb-3">
@@ -26,7 +51,15 @@ const Login = () => {
                       <label className="text-muted" htmlFor="password">Mật khẩu</label>
                       
                     </div>
-                    <input id="password" type="password" className="form-control" name="password" required />
+                    <input 
+                      id="password" 
+                      type="password" 
+                      className="form-control" 
+                      name="password" 
+                      onChange={e => setDetails({...details, accountPassword: e.target.value})}
+                      value ={details.accountPassword}
+                      required 
+                    />
                     <div className="invalid-feedback">
                       Mật khẩu không được bỏ trống
                     </div>
@@ -36,7 +69,7 @@ const Login = () => {
                       <input type="checkbox" name="remember" id="remember" className="form-check-input" />
                       <label htmlFor="remember" className="form-check-label">Nhớ tài khoản</label>
                     </div>
-                    <button type="submit" className="btn btn-primary ms-auto">
+                    <button variant="success" type="submit" className="btn btn-primary ms-auto">
                       Đăng nhập
                     </button>
                   </div>
