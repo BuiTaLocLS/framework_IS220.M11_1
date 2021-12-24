@@ -1,4 +1,5 @@
 import React from 'react';
+import './AddProduct.scss'
 
 const AddProduct = () => {
   return (
@@ -46,10 +47,10 @@ const AddProduct = () => {
               </div>
 
               <div className="row">
-                <div className="col-md-5 mb-3" className="form-label">
+                <div className="col-md-6 mb-3" >
                   <label htmlFor="type">Loại sản phẩm</label>
                   <select className="form-select form-select-lg mb-3" id="type" required>
-                    <option selected>Chọn loại sản phẩm</option>
+                    <option value="" disabled selected hidden>Chọn loại sản phẩm</option>
                     <option value>Giày thể thao</option>
                     <option value>Quần áo bóng đá</option>
                     <option value>Bó gối bóng đá</option>
@@ -59,15 +60,21 @@ const AddProduct = () => {
                     Please select a valid country.
                   </div>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-md-5 mb-3" className="form-label">
+              
+              
+                <div className="col-md-6 mb-3">
                   <label htmlFor="supplier">Nhà cung cấp</label>
                   <select className="form-select form-select-lg mb-3" id="supplier" required>
-                    <option selected>Chọn nhà cung cấp</option>
-                    <option value>Adidas</option>
-                    <option value>Mira</option>
-                    <option value>Pan Sonic</option>
+                    <option value="" disabled selected hidden>Chọn nhà cung cấp</option>
+                    <option value="1">Adidas</option>
+                    <option value="2">Nike</option>
+                    <option value="3">Aolikes</option>
+                    <option value="4">Super Sonic</option>
+                    <option value="5">Mira Sky</option>
+                    <option value="6">Jogarbola</option>
+                    <option value="7">Fasten</option>
+                    <option value="8">Clash</option>
+
                   </select>
                   <div className="invalid-feedback">
                     Please select a valid country.

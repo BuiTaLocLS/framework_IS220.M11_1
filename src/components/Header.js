@@ -1,11 +1,21 @@
-import React, { useContext } from 'react';
+import React, {useState, useEffect,useContext } from 'react';
 import { Navbar, Nav, NavDropdown, Container, FormControl, Form, Button } from 'react-bootstrap';
 import { Link, useHistory } from "react-router-dom";
 import { CartContext } from '../contexts/CartContext';
+import getSessionStorage from "../customize/getSessionStorage"
+import useFetch from '../customize/fetch';
 import './Header.scss';
 
 const Header = () => {
-    const { cart } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
+    const [userID, setUserID] = useState(
+        getSessionStorage('userID', false)
+      );
+      console.log('userID: ', userID)
+      const {data: user, loading, isError} = useFetch(`http://localhost:54610/api/User/GetbyID/${userID}`);
+
+    console.log("user", user)
+
     return (
         <div>
             <Navbar bg="light" expand="lg" className="fixed-top top-header">
@@ -47,8 +57,10 @@ const Header = () => {
                             navbarScroll
                         >
                             <Nav.Link><Link to="/list-cart">Cart({cart.length})</Link></Nav.Link>
+
                             <Nav.Link><Link to="/log-in">Login</Link></Nav.Link>
                             <Nav.Link><Link to="/sign-up">Sign up</Link></Nav.Link>
+                        
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

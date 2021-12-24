@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { Form } from 'react-bootstrap';
+import './Signup.scss'
+
 
 const Signup = () => {
   return (
@@ -15,28 +18,56 @@ const Signup = () => {
                   <form method="POST" className="needs-validation" noValidate autoComplete="off">
                     <div className="mb-3">
                       <label className="mb-2 text-muted" htmlFor="name">Họ và tên</label>
-                      <input id="name" type="text" className="form-control" name="name" required autofocus />
+                      <input id="name" type="text" className="form-control" name="name" placeholder="Nguyễn A" required autofocus />
                       <div className="invalid-feedback">
                         Name is required	
                       </div>
                     </div>
+                    <div className="mb-3" className="form-label">
+                      <label htmlFor="gender" className="mb-2 text-muted">Giới tính</label>
+                      <select className="form-select form-select-lg mb-2" id="gender" required>
+                        <option value="" disabled selected hidden>Chọn giới tính</option>
+                        <option value>Nam</option>
+                        <option value>Nữ</option>
+                      </select>
+                      <div className="invalid-feedback">
+                        Please select a valid country.
+                      </div>
+                    </div>
+                    <div>
+                    
+                    <div className="mb-3" className="form-label">
+                      <Form.Group controlId="dob">
+                          <Form.Label htmlFor="birthdate" className="mb-2 text-muted">Ngày sinh</Form.Label>
+                          <Form.Control type="date" name="dob" placeholder="Ngày sinh" />
+                      </Form.Group>
+                    </div>
+                      
+                    </div>
                     <div className="mb-3">
-                      <label className="mb-2 text-muted" htmlFor="email">Email đăng nhập</label>
-                      <input id="email" type="email" className="form-control" name="email"  required />
+                      <label className="mb-2 text-muted" htmlFor="email">Email</label>
+                      <input id="email" type="email" className="form-control" name="email" placeholder="example@email.com" required />
+                      <div className="invalid-feedback">
+                      Email is invalid
+                      </div>
+                    </div>
+                    <div className="mb-3">
+                      <label className="mb-2 text-muted" htmlFor="user">Tên đăng nhập</label>
+                      <input id="user" type="text" className="form-control" name="user" placeholder="user" required />
                       <div className="invalid-feedback">
                       Email is invalid
                       </div>
                     </div>
                     <div className="mb-3">
                       <label className="mb-2 text-muted" htmlFor="password">Mật khẩu</label>
-                      <input id="password" type="password" className="form-control" name="password" required />
+                      <input id="password" type="password" className="form-control" name="password" placeholder="******" required />
                       <div className="invalid-feedback">
                         Password is required
                       </div>
                     </div>
                     <div className="mb-3">
                       <label className="mb-2 text-muted" htmlFor="password">Nhập lại mật khẩu</label>
-                      <input id="password" type="password" className="form-control" name="password" required />
+                      <input id="password" type="password" className="form-control" name="password" placeholder="******" required />
                       <div className="invalid-feedback">
                         Password is required
                       </div>
