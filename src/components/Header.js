@@ -6,15 +6,22 @@ import getSessionStorage from "../customize/getSessionStorage"
 import useFetch from '../customize/fetch';
 import './Header.scss';
 
+const length = (cart) => {
+    sessionStorage.setItem('listCart', JSON.stringify(cart));
+    return cart.length
+}
+
 const Header = () => {
-  const { cart } = useContext(CartContext);
+    const { cart } = useContext(CartContext);
     const [userID, setUserID] = useState(
         getSessionStorage('userID', false)
-      );
-      console.log('userID: ', userID)
-      const {data: user, loading, isError} = useFetch(`http://localhost:54610/api/User/GetbyID/${userID}`);
+        );
+    console.log('userID: ', userID)
+    const {data: user, loading, isError} = useFetch(`http://localhost:54610/api/User/GetbyID/${userID}`);
 
     console.log("user", user)
+
+    
 
     return (
         <div>
@@ -56,7 +63,7 @@ const Header = () => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link><Link to="/list-cart">Cart({cart.length})</Link></Nav.Link>
+                            <Nav.Link><Link to="/list-cart">Cart({length(cart)})</Link></Nav.Link>
 
                             <Nav.Link><Link to="/log-in">Login</Link></Nav.Link>
                             <Nav.Link><Link to="/sign-up">Sign up</Link></Nav.Link>

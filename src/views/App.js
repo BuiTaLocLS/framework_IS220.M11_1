@@ -9,6 +9,7 @@ import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import ListCart from './ListCart';
 import Contact from './Contact';
+import Profile from '../components/Profile'
 import CartConText from '../contexts/CartContext';
 import {
   BrowserRouter as Router,
@@ -69,6 +70,9 @@ function App() {
             </Route>
             <Route path="/list-cart" exact>
               <ListCart />
+            </Route>
+            <Route path="/profile" exact>
+              <Profile />
             </Route>
           </Switch>
           <Footer />
