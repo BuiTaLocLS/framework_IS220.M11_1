@@ -5,6 +5,7 @@ import useFetch from '../customize/fetch';
 import '../components/ProductBlock.scss';
 
 const Catalog = () => {
+  let history = useHistory();
   let { idType } = useParams();
   const [show, setShow] = useState(false);
   const [newData, setNewData] = useState([]);
@@ -14,13 +15,18 @@ const Catalog = () => {
     = useFetch(`http://localhost:54610/api/Product/GetAll`);
 
 
+
+  let curentProducts = dataProducts;
+
   useEffect(() => {
     if (dataProducts && dataProducts.length > 0) {
       setNewData(dataProducts)
     }
     console.log("id", idType);
-    if (idType && idType > 0) {
+    if (idType && idType > 0 && !isNaN(idType)) {
       filterProductsbyType(idType);
+    } else if (idType && isNaN(idType)) {
+      filterProductsbySearch(idType);
     }
 
     document.querySelectorAll(`#type${idType}`).forEach(el => el.checked = true);
@@ -30,15 +36,28 @@ const Catalog = () => {
   const [checked, setChecked] = useState(false);
 
   const filterProductsbyType = (typeNumber) => {
-    let curentProducts = dataProducts;
+
     curentProducts = curentProducts.filter(item => item.productTypeID == typeNumber)
     setNewData(curentProducts)
   }
 
-  const filterProducts = (typeNumber) => {
+  const filterProductsbySearch = (textSearch) => {
+    curentProducts = curentProducts.filter(item => item.productName.toLowerCase().includes(textSearch.toLowerCase()));
+    setNewData(curentProducts)
+  }
+
+  const filterProducts = (str, typeNumber) => {
     let curentProducts = dataProducts;
     if (checked == false) {
-      curentProducts = curentProducts.filter(item => item.productTypeID == typeNumber)
+      history.push("/catalog");
+      curentProducts = curentProducts.filter(item => item[str] == typeNumber)
+      document.getElementById('seachBar').value = '';
+      if (str == "productTypeID") {
+        document.querySelectorAll(".supfilter input[type=radio]:checked").forEach(el => el.checked = false);
+      }
+      if (str == "supplierID") {
+        document.querySelectorAll(".typefilter input[type=radio]:checked").forEach(el => el.checked = false);
+      }
       setNewData(curentProducts)
     } else {
       setNewData(dataProducts);
@@ -51,7 +70,7 @@ const Catalog = () => {
         <div className="col-3">
           <div>
             <h5>Loại: </h5>
-            <div><div class="form-check">
+            <div className="typefilter"><div class="form-check">
               <input
                 class="form-check-input"
                 type="radio"
@@ -59,7 +78,7 @@ const Catalog = () => {
                 name="type"
                 id="type3"
                 defaultChecked={checked}
-                onChange={() => filterProducts(3)}
+                onChange={() => filterProducts("productTypeID", 3)}
               />
               <label class="form-check-label" for="flexCheckDefault">
                 Giày thể thao
@@ -73,7 +92,7 @@ const Catalog = () => {
                   name="type"
                   id="type5"
                   defaultChecked={checked}
-                  onChange={() => filterProducts(5)}
+                  onChange={() => filterProducts("productTypeID", 5)}
                 />
                 <label class="form-check-label" for="flexCheckDefault">
                   Quần áo bóng đá
@@ -87,7 +106,7 @@ const Catalog = () => {
                   name="type"
                   id="type7"
                   defaultChecked={checked}
-                  onChange={() => filterProducts(7)}
+                  onChange={() => filterProducts("productTypeID", 7)}
                 />
                 <label class="form-check-label" for="flexCheckDefault">
                   Túi thể thao
@@ -101,7 +120,7 @@ const Catalog = () => {
                   name="type"
                   id="type6"
                   defaultChecked={checked}
-                  onChange={() => filterProducts(6)}
+                  onChange={() => filterProducts("productTypeID", 6)}
                 />
                 <label class="form-check-label" for="flexCheckDefault">
                   Bó gói bóng đá
@@ -110,14 +129,17 @@ const Catalog = () => {
             </div>
           </div>
           <hr />
-          <div>
+          <div className="supfilter">
             <h5>Nhà cung cấp: </h5>
             <div><div class="form-check">
               <input
                 class="form-check-input"
-                type="checkbox"
+                type="radio"
+                name="sup"
                 value=""
                 id="flexCheckDefault"
+                defaultChecked={checked}
+                onChange={() => filterProducts("supplierID", 3)}
               />
               <label class="form-check-label" for="flexCheckDefault">
                 Aolikes
@@ -126,9 +148,12 @@ const Catalog = () => {
               <div class="form-check">
                 <input
                   class="form-check-input"
-                  type="checkbox"
+                  type="radio"
+                  name="sup"
                   value=""
                   id="flexCheckDefault"
+                  defaultChecked={checked}
+                  onChange={() => filterProducts("supplierID", 4)}
                 />
                 <label class="form-check-label" for="flexCheckDefault">
                   Super Sonic
@@ -137,9 +162,12 @@ const Catalog = () => {
               <div class="form-check">
                 <input
                   class="form-check-input"
-                  type="checkbox"
+                  type="radio"
+                  name="sup"
                   value=""
                   id="flexCheckDefault"
+                  defaultChecked={checked}
+                  onChange={() => filterProducts("supplierID", 5)}
                 />
                 <label class="form-check-label" for="flexCheckDefault">
                   Mira Sky
@@ -148,9 +176,12 @@ const Catalog = () => {
               <div class="form-check">
                 <input
                   class="form-check-input"
-                  type="checkbox"
+                  type="radio"
+                  name="sup"
                   value=""
                   id="flexCheckDefault"
+                  defaultChecked={checked}
+                  onChange={() => filterProducts("supplierID", 6)}
                 />
                 <label class="form-check-label" for="flexCheckDefault">
                   Jogarbola
@@ -159,9 +190,12 @@ const Catalog = () => {
               <div class="form-check">
                 <input
                   class="form-check-input"
-                  type="checkbox"
+                  type="radio"
+                  name="sup"
                   value=""
                   id="flexCheckDefault"
+                  defaultChecked={checked}
+                  onChange={() => filterProducts("supplierID", 7)}
                 />
                 <label class="form-check-label" for="flexCheckDefault">
                   Fasten
@@ -170,33 +204,25 @@ const Catalog = () => {
               <div class="form-check">
                 <input
                   class="form-check-input"
-                  type="checkbox"
+                  type="radio"
+                  name="sup"
                   value=""
                   id="flexCheckDefault"
+                  defaultChecked={checked}
+                  onChange={() => filterProducts("supplierID", 8)}
                 />
                 <label class="form-check-label" for="flexCheckDefault">
                   Clash
                 </label>
               </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="flexCheckDefault"
-                />
-                <label class="form-check-label" for="flexCheckDefault">
-                  Khác
-                </label>
-              </div>
             </div>
           </div>
           <hr />
-          <div className="price-filter-control">
+          {/* <div className="price-filter-control">
             <h5>Giá từ: </h5>
             <input type="number" className="form-control w-50 pull-left mb-2" defaultValue={300000} id="price-min-control" />
             <input type="number" className="form-control w-50 pull-right" defaultValue={1000000} id="price-max-control" />
-          </div>
+          </div> */}
         </div>
         <div className="col-9">
           <div className="row">
