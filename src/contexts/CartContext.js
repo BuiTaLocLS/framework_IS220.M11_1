@@ -41,6 +41,7 @@ const CartContextProvider = ({ children }) => {
         //         "Money": newItem.price
         //       });    
         // }
+           
         
     }
 

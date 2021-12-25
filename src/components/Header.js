@@ -97,7 +97,7 @@ const Header = () => {
                                 </>
                             }
 
-                            <Nav.Link><Link to="/list-cart">Cart({length(cart)})</Link></Nav.Link>
+            
 
 
                         </Nav>
