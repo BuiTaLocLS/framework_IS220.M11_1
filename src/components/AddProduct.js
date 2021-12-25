@@ -4,7 +4,7 @@ import './AddProduct.scss'
 const AddProduct = () => {
   return (
     <div className="container mt-5">
-      <div className="card g-5">  
+      <div className="card g-5 row" >  
         <div className="col-md-7 col-lg-8">
           <h4>Thêm sản phẩm</h4>
           <form noValidate>

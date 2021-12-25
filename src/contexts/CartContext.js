@@ -1,31 +1,54 @@
 import React, { createContext, useState } from 'react'
+import getSessionStorage from "../customize/getSessionStorage"
+
 
 export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
     // State
-    const [cart, setCart] = useState([
-        {
-            productID: 129,
-            productName: "Giày Pan Sonic S 2021 IC",
-            price: 540000.0,
-            img_URL: "https://drive.google.com/uc?export=view&id=1ZOfFSKXYxwLYY-3R3YobFDs9ZEAEh5Ia",
-            quantity: 2,
-        },
-    ])
+    const [cart, setCart] = useState(  
+        getSessionStorage('listCart', false)
+    )
+    
+    
+    //ADD CART TO DB
+    // const [userID, setUserID] = useState(
+    //     getSessionStorage('userID', false)
+    //   );
+    //   console.log('userID first: ', userID)
+    //   const {data: user, loading, isError} = useFetch(`http://localhost:54610/api/User/GetbyID/${userID}`);
 
-
+    // console.log("accountID cart first: ", user.userMail)
+    // //FIND CART ID
+    // let cartID = 0
+    // const {data: listCart, loading: cartLoading, isError: cartIsError} = useFetch("http://localhost:54610/api/Cart/GetAll");
+    // for(let item = 0; item < listCart.length; item++){
+    //     if(listCart[item].accountID == user.userMail){
+    //         cartID = item + 1
+    //     }
+    // }
     const handleBuyClick = (newItem) => {
         setCart([
             ...cart,
             newItem
-        ])
+        ]);
+        //Test post cart detail
+        // if(cartID != 0){
+        //     cartID.toString()
+        //     axios.post("https://localhost:54610/api/CartDetail/Post", {
+        //         "CartID": cartID,
+        //         "ProductID": newItem.ProductID,
+        //         "Money": newItem.price
+        //       });    
+        // }
+        
     }
 
     const deleteItemCart = (id) => {
         let currentCart = cart;
         currentCart = currentCart.filter(item => item.productID !== id)
         setCart(currentCart)
+        sessionStorage.setItem('listCart', JSON.stringify(currentCart));
     }
 
     // Context data
