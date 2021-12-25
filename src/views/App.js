@@ -9,6 +9,7 @@ import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import ListCart from './ListCart';
 import Contact from './Contact';
+import Profile from '../components/Profile'
 import CartConText from '../contexts/CartContext';
 import AuthContext from '../contexts/AuthContext';
 import {

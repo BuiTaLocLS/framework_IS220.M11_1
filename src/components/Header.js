@@ -6,7 +6,13 @@ import { CartContext } from '../contexts/CartContext';
 import getSessionStorage from "../customize/getSessionStorage"
 import useFetch from '../customize/fetch';
 import './Header.scss';
+
 import { AuthContext } from '../contexts/AuthContext';
+const length = (cart) => {
+    sessionStorage.setItem('listCart', JSON.stringify(cart));
+    return cart.length
+}
+
 const Header = () => {
     let history = useHistory();
     const { isAuthenticated, name, handleSetAuth } = useContext(AuthContext);
@@ -74,6 +80,7 @@ const Header = () => {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
+
                             <Nav.Link><Link to="/list-cart">Cart({cart.length})</Link></Nav.Link>
                             {
                                 isAuthenticated === true &&
@@ -89,6 +96,8 @@ const Header = () => {
                                     <Nav.Link><Link to="/sign-up">Sign up</Link></Nav.Link>
                                 </>
                             }
+
+                            <Nav.Link><Link to="/list-cart">Cart({length(cart)})</Link></Nav.Link>
 
 
                         </Nav>
