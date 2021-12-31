@@ -73,6 +73,9 @@ function App() {
               <Route path="/list-cart" exact>
                 <ListCart />
               </Route>
+              <Route path="/profile" exact>
+                <Profile />
+              </Route>
             </Switch>
             <Footer />
           </Router>

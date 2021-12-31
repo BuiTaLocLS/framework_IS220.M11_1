@@ -20,6 +20,7 @@ const Header = () => {
     const [userID, setUserID] = useState(
         getSessionStorage('userID', false)
     );
+    
     const [search, setSearch] = useState("");
     console.log('userID: ', userID)
     const { data: user, loading, isError } = useFetch(`http://localhost:54610/api/User/GetbyID/${userID}`);
@@ -81,7 +82,7 @@ const Header = () => {
                             navbarScroll
                         >
 
-                            <Nav.Link><Link to="/list-cart">Cart({cart.length})</Link></Nav.Link>
+                            <Nav.Link><Link to="/list-cart">Cart({length(cart)})</Link></Nav.Link>
                             {
                                 isAuthenticated === true &&
                                 <>
