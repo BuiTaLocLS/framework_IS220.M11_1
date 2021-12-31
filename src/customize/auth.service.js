@@ -1,21 +1,29 @@
 import axios from "axios";
+import authHeader from "./auth-header"
 
-const API_URL = "http://localhost:54610/api/home/login";
+
+
+const addProduct = (ProductName, ProductTypeID, SupplierID, Price) => {
+  const API_URL_ADDPRODUCT = "http://localhost:54610/api/Product/Post"
+
+  console.log("API: ",API_URL_ADDPRODUCT)
+
+  return axios.post(API_URL_ADDPRODUCT, 
+    { 
+    "ProductName": ProductName,
+    "ProductTypeID": ProductTypeID,
+    "SupplierID": SupplierID,
+    "Price": Price
+  },
+  { headers: authHeader() } 
+  );
+}
 
 const register = (username, email, password, birthday, gender, address) => {
 
   const API_URL_REGISTER = "http://localhost:54610/api/User/PostProcedure/" + password
 
   console.log("API: ",API_URL_REGISTER)
-
-  const BODY_POST = {
-    "userName": username,
-    "userMail": email,
-    "userBirthdate": birthday,
-    "userGender": gender,
-    "userAddress": address
-  }
-  console.log("BODY: ", BODY_POST)
 
   return axios.post(API_URL_REGISTER, {
     "userName": username,
@@ -27,6 +35,7 @@ const register = (username, email, password, birthday, gender, address) => {
 };
 
 const login = (username, password) => {
+  const API_URL = "http://localhost:54610/api/home/login";
   return axios
     .post(API_URL, {
       "accountID": username,
@@ -52,6 +61,7 @@ const getCurrentUser = () => {
 };
 
 export default {
+  addProduct,
   register,
   login,
   logout,
