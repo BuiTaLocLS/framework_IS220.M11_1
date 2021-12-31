@@ -4,12 +4,16 @@ import { CartContext } from '../contexts/CartContext';
 import { Link, useHistory } from "react-router-dom";
 import { toast } from 'react-toastify';
 const ListCart = () => {
-    const { cart, handleBuyClick, deleteItemCart } = useContext(CartContext);
-
+    const { handleBuyClick, deleteItemCart } = useContext(CartContext);
+    let cart = [];
+    if (localStorage.getItem("listCart")) {
+        cart = JSON.parse(localStorage.getItem("listCart"));
+    }
+    console.log(cart);
     const [totalmoney, setTotalmoney] = useState(1);
     useEffect(() => {
         var result = cart.reduce(function (total, currentValue, currentIndex, arr) {
-            return total + currentValue.quantity * currentValue.price;
+            return total + currentValue.money;
         }, 0);
         setTotalmoney(result);
     }, [cart]);
@@ -32,7 +36,7 @@ const ListCart = () => {
                                                 <>
                                                     <div className="col-lg-3 col-md-12 mb-4 mb-lg-0">
                                                         <div className="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                                                            <img src={item.img_URL} className="w-100" alt="Blue Jeans Jacket" />
+                                                            <img src={item.img_URL} className="w-100" alt="Anh San Pham" />
                                                             <a href="#!">
                                                                 <div className="mask" style={{ backgroundColor: 'rgba(251, 251, 251, 0.2)' }} />
                                                             </a>
@@ -41,8 +45,8 @@ const ListCart = () => {
                                                     <div className="col-lg-5 col-md-6 mb-4 mb-lg-0 pb-3" key={item.productID}>
                                                         <p><strong>{item.productName}</strong></p>
                                                         <p>Giá sản phẩm: {item.price} VNĐ</p>
-                                                        <p>Số lượng: {item.quantity}</p>
-                                                        <strong>Tổng: {item.price * item.quantity} VNĐ</strong>
+                                                        <p>Số lượng: {item.capacity}</p>
+                                                        <strong>Tổng: {item.money} VNĐ</strong>
                                                         <button type="button" className="btn btn-outline-danger btn-block mt-3 mb-2" onClick={() => deleteItemCart(item.productID)}>
                                                             Xoá khỏi giỏ hàng
                                                         </button>

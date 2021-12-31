@@ -1,10 +1,16 @@
 import React, { createContext, useState } from 'react'
+import axios from "axios";
 import getSessionStorage from "../customize/getSessionStorage"
-
-
+import useFetch from '../customize/fetch';
+import AuthService from '../customize/auth.service';
 export const CartContext = createContext();
 
+// JSON.parse(localStorage.getItem("user")).user.accountID;
+
 const CartContextProvider = ({ children }) => {
+    const accountID = AuthService.getCurrentUser();
+    const { data: arrCart } = useFetch(`http://localhost:54610/api/Cartdetail/GetbyAccountID/${accountID}`);
+
     // State
     const [cart, setCart] = useState(
         // getSessionStorage('listCart', false)
@@ -28,47 +34,46 @@ const CartContextProvider = ({ children }) => {
     //         cartID = item + 1
     //     }
     // }
-    const handleBuyClick = (newItem) => {
-        const newArr = [...cart];
-        const index = newArr.findIndex((item) => item.productID == newItem.productID);
-        if (index !== -1) {
-            newArr[index] = {
-                ...newArr[index],
-                quantity: Number(newArr[index].quantity) + Number(newItem.quantity)
-            }
-            setCart([
-                ...newArr,
-            ]);
-        } else
-            setCart([
-                ...cart,
-                newItem
-            ]);
-        //Test post cart detail
-        // if(cartID != 0){
-        //     cartID.toString()
-        //     axios.post("https://localhost:54610/api/CartDetail/Post", {
-        //         "CartID": cartID,
-        //         "ProductID": newItem.ProductID,
-        //         "Money": newItem.price
-        //       });    
-        // }
+    const handleBuyClick = (productID, cartID, capacity, money, addDate) => {
+        axios.post('http://localhost:54610/api/CartDetail/Post', {
+            // "productID": newItem.productID,
+            // "cartID": newItem.cartID,
+            // "capacity": newItem.capacity,
+            // "money": newItem.money,
+            // "addDate": newItem.addDate
+            "productID": productID,
+            "cartID": cartID,
+            "capacity": capacity,
+            "money": money,
+            "addDate": addDate
+        });
 
 
+
+        localStorage.setItem('listCart', JSON.stringify(arrCart));
+        setCart(arrCart)
+
+    }
+
+    const setDefaultcart = (arr) => {
+        console.log("arr", arr)
+        setCart(arr)
+        localStorage.setItem('listCart', JSON.stringify(arr));
     }
 
     const deleteItemCart = (id) => {
         let currentCart = cart;
         currentCart = currentCart.filter(item => item.productID !== id)
         setCart(currentCart)
-        sessionStorage.setItem('listCart', JSON.stringify(currentCart));
+        localStorage.setItem('listCart', JSON.stringify(currentCart));
     }
 
     // Context data
     const cartContextData = {
         cart,
         handleBuyClick,
-        deleteItemCart
+        deleteItemCart,
+        setDefaultcart
     }
 
     // Return provider

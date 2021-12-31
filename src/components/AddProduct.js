@@ -86,15 +86,16 @@ const AddProduct = () => {
 
   return (
     <div className="container mt-5">
-      <div className="card g-5 row" >  
+      <div className="card g-5 row" >
         <div className="col-md-7 col-lg-8">
           <h4>Thêm sản phẩm</h4>
           <Form noValidate>
             <div className="row">
               <div className='col-sm-12'>
                 <label htmlFor="productName" className="form-label">
-                Tên sản phẩm
+                  Tên sản phẩm
                 </label>
+
                 <Input
                 id="productName" 
                 type="text" 
@@ -108,6 +109,7 @@ const AddProduct = () => {
               </div>
               
               <div className="col-sm-12 mb-3">
+
                 <label htmlFor="price" className="form-label">Giá sản phẩm</label>
                 <div className="input-group">
                   <Input 
@@ -121,9 +123,9 @@ const AddProduct = () => {
                    />
                   <div className="input-group-prepend">
                     <span className="input-group-text">VND</span>
-                  </div>
-                
+                  </div>         
                 </div>
+
               </div>
               
 
@@ -148,8 +150,8 @@ const AddProduct = () => {
                     Please select a valid country.
                   </div>
                 </div>
-              
-              
+
+
                 <div className="col-md-6 mb-3">
                   <label htmlFor="supplier">Nhà cung cấp</label>
                   <select 
@@ -172,8 +174,9 @@ const AddProduct = () => {
                     Please select a valid country.
                   </div>
                 </div>
-              </div>     
+              </div>
             </div>
+
             <button className="w-100 btn btn-primary btn-lg" type="submit"
             onClick={(event) => handleAdd(event)}>
               Hoàn tất
@@ -191,6 +194,7 @@ const AddProduct = () => {
                 <CheckButton style={{ display: "none" }} ref={checkBtn} />
           </Form>
         </div> 
+
       </div>
     </div>
   );

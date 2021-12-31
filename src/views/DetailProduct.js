@@ -3,7 +3,12 @@ import './DetailProduct.scss';
 import useFetch from '../customize/fetch';
 import { useParams, useHistory } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
+
+import AuthService from '../customize/auth.service';
 const DetailProduct = () => {
+
+    const accountID = AuthService.getCurrentUser().accountID;
+    const { data: CartId } = useFetch(`http://localhost:54610/api/cart/GetCartID/${accountID}`);
     const { handleBuyClick } = useContext(CartContext);
     const [num, setNum] = useState(1);
     let { id } = useParams();
@@ -39,13 +44,13 @@ const DetailProduct = () => {
                             </div>
 
                             <div className="action mt-3">
-                                <button type="button" class="btn btn-primary" onClick={() => handleBuyClick({
-                                    productID: dataProductsDetails.productID,
-                                    productName: dataProductsDetails.productName,
-                                    price: dataProductsDetails.price,
-                                    img_URL: dataProductsDetails.img_URL,
-                                    quantity: num,
-                                })}>Thêm vào giỏ hàng</button>
+                                <button type="button" class="btn btn-primary" onClick={() => handleBuyClick(
+                                    dataProductsDetails.productID,
+                                    CartId,
+                                    num,
+                                    dataProductsDetails.price * num,
+                                    "2022-01-01T00:00:00"
+                                )}>Thêm vào giỏ hàng</button>
                             </div>
                         </div>
                     </div>

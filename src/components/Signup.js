@@ -1,10 +1,10 @@
+
 import React, { useState, useRef } from 'react';
 import { Link ,useHistory } from "react-router-dom";
 
 import Form1 from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import { isEmail } from "validator";
-
 import { toast } from 'react-toastify';
 import { Form } from 'react-bootstrap';
 import CheckButton from "react-validation/build/button";
@@ -75,6 +75,7 @@ const vpassword = (value) => {
 };
 
 const Signup = () => {
+
   const checkBtn = useRef();
   let history = useHistory();
 
@@ -94,9 +95,11 @@ const Signup = () => {
   const handleOnchangeHoten = (event) => {
     setSethoten(event.target.value)
   }
+
   const handleOnchangeDiachi = (event) => {
     setDC(event.target.value)
   }
+
   const handleOnchangeGT = (event) => {
     setGT(event.target.value)
   }
@@ -106,6 +109,7 @@ const Signup = () => {
   const handleOnchangeEmail = (event) => {
     setEmail(event.target.value)
   }
+
   
   const handleOnchangPass2 = (event) => {
     setPass2(event.target.value)
@@ -162,6 +166,7 @@ const Signup = () => {
           <div className="card shadow-lg">
             <div className="card-body p-5">
               <h1 className="fs-4 card-title fw-bold mb-4">Tạo tài khoản</h1>
+
               <Form1 className="needs-validation" noValidate autoComplete="off">
                 <div className="mb-3">
                   <label className="mb-2 text-muted" htmlFor="name">Họ và tên</label>
@@ -170,10 +175,12 @@ const Signup = () => {
                   placeholder="Nguyễn A" value={hoten} onChange={(event) => handleOnchangeHoten(event)} 
                   validations={[required, vusername]} 
                   />
+
                   <div className="invalid-feedback">
                     Name is required
                   </div>
                 </div>
+
                 <div className="mb-3">
                   <label className="mb-2 text-muted" htmlFor="name">Địa chỉ</label>
                   <Input 
@@ -206,6 +213,7 @@ const Signup = () => {
                       <Form.Control type="date" name="dob" placeholder="Ngày sinh" value={ns} onChange={(event) => handleOnchangeNS(event)} />
                     </Form.Group>
                   </div>
+
 
                 </div>
                 <div className="mb-3">
@@ -249,11 +257,13 @@ const Signup = () => {
                   </div>
                 </div>
 
+
                 <div className="align-items-center">
                   <button className="btn btn-primary ms-auto" onClick={(event) => handleSignIn(event)}>
                     Tạo tài khoản
                   </button>
                 </div>
+
                 {message && (
                   <div className="form-group">
                     <div
@@ -267,6 +277,7 @@ const Signup = () => {
                 <CheckButton style={{ display: "none" }} ref={checkBtn} />
               </Form1>
             </div>
+
             <div className="card-footer py-3 border-0">
               <div className="text-center">
                 Bạn đã có tài khoản? <Link to="/log-in" className="text-dark"> Đăng nhập</Link>
@@ -276,6 +287,7 @@ const Signup = () => {
         </div>
       </div>
     </div>
+
   );
 }
 
