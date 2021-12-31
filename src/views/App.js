@@ -12,6 +12,8 @@ import Contact from './Contact';
 import Profile from '../components/Profile'
 import CartConText from '../contexts/CartContext';
 import AuthContext from '../contexts/AuthContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   BrowserRouter as Router,
   Switch,
@@ -79,6 +81,17 @@ function App() {
             </Switch>
             <Footer />
           </Router>
+          <ToastContainer
+            position='top-right'
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </CartConText>
       </AuthContext>
     </div>

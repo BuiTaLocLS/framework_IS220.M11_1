@@ -6,11 +6,12 @@ export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
     // State
-    const [cart, setCart] = useState(  
-        getSessionStorage('listCart', false)
+    const [cart, setCart] = useState(
+        // getSessionStorage('listCart', false)
+        []
     )
-    
-    
+
+
     //ADD CART TO DB
     // const [userID, setUserID] = useState(
     //     getSessionStorage('userID', false)
@@ -28,10 +29,21 @@ const CartContextProvider = ({ children }) => {
     //     }
     // }
     const handleBuyClick = (newItem) => {
-        setCart([
-            ...cart,
-            newItem
-        ]);
+        const newArr = [...cart];
+        const index = newArr.findIndex((item) => item.productID == newItem.productID);
+        if (index !== -1) {
+            newArr[index] = {
+                ...newArr[index],
+                quantity: Number(newArr[index].quantity) + Number(newItem.quantity)
+            }
+            setCart([
+                ...newArr,
+            ]);
+        } else
+            setCart([
+                ...cart,
+                newItem
+            ]);
         //Test post cart detail
         // if(cartID != 0){
         //     cartID.toString()
@@ -41,8 +53,8 @@ const CartContextProvider = ({ children }) => {
         //         "Money": newItem.price
         //       });    
         // }
-           
-        
+
+
     }
 
     const deleteItemCart = (id) => {

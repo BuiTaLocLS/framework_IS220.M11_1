@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import './ListCart.scss';
 import { CartContext } from '../contexts/CartContext';
 import { Link, useHistory } from "react-router-dom";
+import { toast } from 'react-toastify';
 const ListCart = () => {
     const { cart, handleBuyClick, deleteItemCart } = useContext(CartContext);
 
@@ -12,6 +13,10 @@ const ListCart = () => {
         }, 0);
         setTotalmoney(result);
     }, [cart]);
+
+    const handleConfirm = () => {
+        toast.success("Đặt hàng thành công!")
+    }
     return (
 
         <div>
@@ -71,7 +76,7 @@ const ListCart = () => {
                                             <p className="mb-0">{totalmoney} VNĐ</p>
                                         </strong>
                                     </div>
-                                    <button type="button" className="btn btn-outline-primary btn-block mt-3">
+                                    <button type="button" className="btn btn-outline-primary btn-block mt-3" onClick={handleConfirm}>
                                         Xác nhận mua hàng
                                     </button>
                                 </div>
