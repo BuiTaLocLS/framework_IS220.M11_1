@@ -3,6 +3,7 @@ import { Navbar, Nav, NavDropdown, Container, FormControl, Form, Button } from '
 import { Link, useHistory } from "react-router-dom";
 
 import { CartContext } from '../contexts/CartContext';
+import AuthService from '../customize/auth.service';
 import getSessionStorage from "../customize/getSessionStorage"
 import useFetch from '../customize/fetch';
 import './Header.scss';
@@ -13,8 +14,6 @@ const length = (cart) => {
     return cart.length
 }
 
-
-
 const Header = () => {
     let history = useHistory();
     const { isAuthenticated, name, handleSetAuth } = useContext(AuthContext);
@@ -23,20 +22,31 @@ const Header = () => {
         getSessionStorage('userID', false)
     );
 
+    const [currentUser, setCurrentUser] = useState(undefined);
+
+    useEffect(() => {
+        if (localStorage.getItem("user") === null) {
+            localStorage.setItem("user", JSON.stringify(""));
+        }
+        const user1 = AuthService.getCurrentUser();
+        if (user1) {
+            setCurrentUser(user1.accountID);
+        }
+    }, [currentUser]);
+
     const [search, setSearch] = useState("");
     console.log('userID: ', userID)
-    const { data: user, loading, isError } = useFetch(`http://localhost:54610/api/User/GetbyID/${userID}`);
+    // const { data: user, loading, isError } = useFetch(`http://localhost:54610/api/User/GetbyID/${userID}`);
 
-    console.log("user", user)
+    // console.log("user", user)
 
     const handleOnChangeSearch = (event) => {
         setSearch(event.target.value);
-
     }
 
     const handleLogout = () => {
-        sessionStorage.setItem('userID', JSON.stringify(-1));
-        handleSetAuth(-1);
+        AuthService.logout();
+        setCurrentUser(undefined);
         history.push("/");
     }
 
@@ -86,18 +96,18 @@ const Header = () => {
 
                             <Nav.Link><Link to="/list-cart">Cart({length(cart)})</Link></Nav.Link>
                             {
-                                isAuthenticated === true &&
-                                <>
-                                    <Nav.Link><Link to="/profile">{name}</Link></Nav.Link>
-                                    <button type="button" className="btn btn-outline-danger" onClick={() => handleLogout()}>Đăng xuất</button>
-                                </>
-                            }
-                            {
-                                isAuthenticated === false &&
-                                <>
-                                    <Nav.Link><Link to="/log-in">Login</Link></Nav.Link>
-                                    <Nav.Link><Link to="/sign-up">Sign up</Link></Nav.Link>
-                                </>
+                                currentUser ? (
+                                    <>
+                                        <Nav.Link><Link to="/profile">{currentUser}</Link></Nav.Link>
+                                        <button type="button" className="btn btn-outline-danger" onClick={() => handleLogout()}>Đăng xuất</button>
+                                    </>)
+
+                                    : (
+                                        <>
+                                            <Nav.Link><Link to="/log-in">Login</Link></Nav.Link>
+                                            <Nav.Link><Link to="/sign-up">Sign up</Link></Nav.Link>
+                                        </>
+                                    )
                             }
 
 
