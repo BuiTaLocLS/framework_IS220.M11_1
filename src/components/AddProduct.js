@@ -4,21 +4,21 @@ import './AddProduct.scss'
 const AddProduct = () => {
   return (
     <div className="container mt-5">
-      <div className="card g-5 row" >  
+      <div className="card g-5 row" >
         <div className="col-md-7 col-lg-8">
           <h4>Thêm sản phẩm</h4>
           <form noValidate>
             <div className="row">
               <div className='col-sm-12'>
                 <label htmlFor="productName" className="form-label">
-                Tên sản phẩm
+                  Tên sản phẩm
                 </label>
                 <input id="productName" type="text" className="form-control" placeholder='Tên sản phẩm' />
                 <div className="invalid-feedback">
-                Tên sản phẩm không được bỏ trống
+                  Tên sản phẩm không được bỏ trống
                 </div>
               </div>
-              
+
               <div className="col-md-6 mb-3">
                 <label htmlFor="price" className="form-label">Giá sản phẩm</label>
                 <div className="input-group">
@@ -26,11 +26,11 @@ const AddProduct = () => {
                   <div className="input-group-prepend">
                     <span className="input-group-text">VND</span>
                   </div>
-                  <div className="invalid-feedback" style={{width: '100%'}}>
+                  <div className="invalid-feedback" style={{ width: '100%' }}>
                     Giá không được bỏ trống
                   </div>
                 </div>
-                
+
               </div>
               <div className="col-md-6 mb-3">
                 <label htmlFor="count" className="form-label">Số lượng sản phẩm</label>
@@ -39,11 +39,11 @@ const AddProduct = () => {
                   <div className="input-group-prepend">
                     <span className="input-group-text">Cái</span>
                   </div>
-                  <div className="invalid-feedback" style={{width: '100%'}}>
+                  <div className="invalid-feedback" style={{ width: '100%' }}>
                     Số lượng không được bỏ trống
                   </div>
                 </div>
-                
+
               </div>
 
               <div className="row">
@@ -60,8 +60,8 @@ const AddProduct = () => {
                     Please select a valid country.
                   </div>
                 </div>
-              
-              
+
+
                 <div className="col-md-6 mb-3">
                   <label htmlFor="supplier">Nhà cung cấp</label>
                   <select className="form-select form-select-lg mb-3" id="supplier" required>
@@ -80,11 +80,11 @@ const AddProduct = () => {
                     Please select a valid country.
                   </div>
                 </div>
-              </div>     
+              </div>
             </div>
             <button className="w-100 btn btn-primary btn-lg" type="submit">Hoàn tất</button>
           </form>
-        </div> 
+        </div>
       </div>
     </div>
   );
