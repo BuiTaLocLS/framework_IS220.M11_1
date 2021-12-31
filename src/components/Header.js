@@ -14,7 +14,6 @@ const length = (cart) => {
     return cart.length
 }
 
-
 const Header = () => {
     let history = useHistory();
     const { isAuthenticated, name, handleSetAuth } = useContext(AuthContext);
@@ -26,12 +25,12 @@ const Header = () => {
     const [currentUser, setCurrentUser] = useState(undefined);
 
     useEffect(() => {
-        if(localStorage.getItem("user") === null){
+        if (localStorage.getItem("user") === null) {
             localStorage.setItem("user", JSON.stringify(""));
         }
         const user1 = AuthService.getCurrentUser();
         if (user1) {
-        setCurrentUser(user1.accountID);
+            setCurrentUser(user1.accountID);
         }
     }, [currentUser]);
 
@@ -43,7 +42,6 @@ const Header = () => {
 
     const handleOnChangeSearch = (event) => {
         setSearch(event.target.value);
-
     }
 
     const handleLogout = () => {
@@ -98,18 +96,18 @@ const Header = () => {
 
                             <Nav.Link><Link to="/list-cart">Cart({length(cart)})</Link></Nav.Link>
                             {
-                                currentUser ?(
-                                <>
-                                    <Nav.Link><Link to="/profile">{currentUser}</Link></Nav.Link>
-                                    <button type="button" className="btn btn-outline-danger" onClick={() => handleLogout()}>Đăng xuất</button>
-                                </>)
-                            
-                                :(
-                                <>
-                                    <Nav.Link><Link to="/log-in">Login</Link></Nav.Link>
-                                    <Nav.Link><Link to="/sign-up">Sign up</Link></Nav.Link>
-                                </>
-                                )
+                                currentUser ? (
+                                    <>
+                                        <Nav.Link><Link to="/profile">{currentUser}</Link></Nav.Link>
+                                        <button type="button" className="btn btn-outline-danger" onClick={() => handleLogout()}>Đăng xuất</button>
+                                    </>)
+
+                                    : (
+                                        <>
+                                            <Nav.Link><Link to="/log-in">Login</Link></Nav.Link>
+                                            <Nav.Link><Link to="/sign-up">Sign up</Link></Nav.Link>
+                                        </>
+                                    )
                             }
 
 
