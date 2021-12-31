@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import './Profile.scss'
-import getSessionStorage from "../customize/getSessionStorage"
+
 import useFetch from '../customize/fetch';
+
 
 
 const Profile = () => {
 
   const [userID, setUserID] = useState(
-    getSessionStorage('userID', false)
+    JSON.parse(localStorage.getItem("user")).user.userID
   );
   console.log('userID: ', userID)
   const {data: user, loading, isError} = useFetch(`http://localhost:54610/api/User/GetbyID/${userID}`);
