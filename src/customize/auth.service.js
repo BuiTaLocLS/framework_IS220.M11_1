@@ -14,13 +14,13 @@ const login = (username, password) => {
   return axios
     .post(API_URL, {
       "accountID": username,
-      "accountPassword":password,
+      "accountPassword": password,
     })
     .then((response) => {
       if (response.data) {
         localStorage.setItem("user", JSON.stringify(response.data));
       }
-      console.log("API return:" , response.data);
+      console.log("API return:", response.data);
       return response.data;
     });
 };
@@ -28,6 +28,7 @@ const login = (username, password) => {
 const logout = () => {
   const tmp = ""
   localStorage.removeItem("user");
+  localStorage.setItem("listCart", JSON.stringify(tmp))
   localStorage.setItem("user", JSON.stringify(tmp))
 };
 

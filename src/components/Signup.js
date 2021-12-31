@@ -35,9 +35,6 @@ const Signup = () => {
   const handleOnchangPass2 = (event) => {
     setPass2(event.target.value)
   }
-  const handleOnchangDate = (event) => {
-    setNS(event.target.value)
-  }
   const handleSignIn = (event) => {
     event.preventDefault();
     if (pass !== pass2) {
@@ -138,17 +135,17 @@ const Signup = () => {
                     Tạo tài khoản
                   </button>
                 </div>
-              </form>
-            </div>
+              </form >
+            </div >
             <div className="card-footer py-3 border-0">
               <div className="text-center">
                 Bạn đã có tài khoản? <Link to="/log-in" className="text-dark"> Đăng nhập</Link>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          </div >
+        </div >
+      </div >
+    </div >
   );
 }
 

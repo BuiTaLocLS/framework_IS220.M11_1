@@ -8,6 +8,7 @@ import getSessionStorage from "../customize/getSessionStorage"
 import useFetch from '../customize/fetch';
 import './Header.scss';
 
+
 import { AuthContext } from '../contexts/AuthContext';
 const length = (cart) => {
     sessionStorage.setItem('listCart', JSON.stringify(cart));
@@ -15,9 +16,13 @@ const length = (cart) => {
 }
 
 const Header = () => {
+    let cart = [];
+    if (localStorage.getItem("listCart")) {
+        cart = JSON.parse(localStorage.getItem("listCart"));
+    }
+
     let history = useHistory();
     const { isAuthenticated, name, handleSetAuth } = useContext(AuthContext);
-    const { cart } = useContext(CartContext);
     const [userID, setUserID] = useState(
         getSessionStorage('userID', false)
     );
@@ -94,7 +99,7 @@ const Header = () => {
                             navbarScroll
                         >
 
-                            <Nav.Link><Link to="/list-cart">Cart({length(cart)})</Link></Nav.Link>
+                            <Nav.Link><Link to="/list-cart">Cart({cart.length})</Link></Nav.Link>
                             {
                                 currentUser ? (
                                     <>
