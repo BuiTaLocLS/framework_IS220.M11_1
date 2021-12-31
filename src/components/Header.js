@@ -13,6 +13,8 @@ const length = (cart) => {
     return cart.length
 }
 
+
+
 const Header = () => {
     let history = useHistory();
     const { isAuthenticated, name, handleSetAuth } = useContext(AuthContext);
